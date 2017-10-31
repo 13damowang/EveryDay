@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>将参数(arguments)转成数组形式</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//创建了一个对象，长度为2
+		var
+			a ={length:2}
+		console.log(Array.prototype.slice.call(a))//undefined*2
+		
+		var
+			b = {length:2,0:'我是参数1',1:'我是参数2'}
+		console.log(Array.prototype.slice.call(b))//['我是参数1','我是参数2']
+		
+		//call的用法
+		var
+			flag = function (){
+				console.log(this)	//this的指向会变成传进去的对象
+				console.log(typeof this)
+			}
+		flag.call('item')
+		
+		
+		/**
+		 * 封装成方法
+		 * @param {Object} s
+		 */
+		var toArray = function(s){ 
+			try{return Array.prototype.slice.call(s);  
+		} catch(e){var arr = [];
+			for(var i = 0,len = s.length; i < len; i++){
+				arr.push(s[i]);   arr[i] = s[i];  //据说这样比push快
+				} 
+				return arr;
+		}}
+		console.log(toArray(b))
+	</script>
+</html>

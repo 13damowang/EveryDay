@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+    .box{
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: fixed 50% * * 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <select id="aaa" class="aaa" name="">
+    <option value="AAA">1</option>
+    <option value="BB">2</option>
+  </select>
+</body>
+<script src="../../js/jquery-1.11.0.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+  var a = "AAA";
+  document.getElementById('aaa').value = a
+</script>
+</html>

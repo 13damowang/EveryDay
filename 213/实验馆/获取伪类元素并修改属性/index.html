@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div::before{
+			display: block;
+		    content: '';
+		    border-bottom: 12px solid #e1e1e1;
+		    border-left: 12px solid transparent;
+		    border-right: 12px solid transparent;
+		    position: absolute;
+		    left: 50%;
+		    top: 20px;
+		    margin-left: -414px;
+		}
+		div.change:before{
+			display: block;
+			content: '';
+			top: 50px;
+		}
+	</style>
+	
+	<body>
+		<div id="box">123</div>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/1.8.1/jquery.js"></script>
+	<script type="text/javascript">
+			var box = $('#box:before').css('top');
+			//var bbox = window.getComputedStyle(box,'::before').getPropertyValue('top')
+//			console.log(box)
+			var data_top = '20px';
+			$('#box').addClass('change').attr('data-top',top)
+	</script>
+</html>

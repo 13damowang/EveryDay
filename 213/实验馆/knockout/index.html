@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/knockout/2.2.1/knockout-debug.js"></script>
+	</head>
+	<body>
+		<ul data-bind="foreach: { data: categories, as: 'category' }">
+			<li>
+				<ul data-bind="foreach: { data: items, as: 'item' }">
+					<li>
+						<span data-bind="text: category.name"></span>:
+						<span data-bind="text: item"></span>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+	<script>
+		var viewModel = {
+			categories: ko.observableArray([{
+					name: 'Fruit',
+					items: ['Apple', 'Orange', 'Banana']
+				},
+				{
+					name: 'Vegetables',
+					items: ['Celery', 'Corn', 'Spinach']
+				}
+			])
+		};
+		ko.applyBindings(viewModel);
+	</script>
+</html>

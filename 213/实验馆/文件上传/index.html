@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>文件上传</title>
+</head>
+<body>
+    <input Multiple type="file" id="input">
+  <!-- 如果你愿意，可以在这个标签里写上 "Multiple" 表示支持多文件形式
+    Multiple = 可以在选择文件的时候 选择多个 如果不添加这个属性，只能选单个
+-->
+
+
+</body>
+<script type="text/javascript">
+// 接下来为这个 input 元素添加 change 事件监听。
+
+  var inputElement = document.getElementById("input");
+  inputElement.addEventListener("change", handleFiles, false);
+
+  function handleFiles(){
+    var fileList = this.files;
+    console.log(fileList)
+    for( var i = 0 ; i < fileList.length ; i++ ){
+      console.log(fileList[i]);
+    }
+  }
+</script>
+</html>

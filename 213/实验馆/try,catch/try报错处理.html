@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>try,catch的应用</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		try{
+			aalert(1)	//有错误执行catch中内容，没有报错直接执行try中的代码
+		}
+		catch(e){
+			console.log(e)	//ReferenceError: aalert is not defined
+			console.log(e.message)	//aalert is not defined
+			console.log(e.name)	//ReferenceError
+		}
+
+		try {
+			throw new Error("Whoops!");	//手动创建报错内容
+		}
+		catch (e) {
+			alert(e.name + ": " + e.message);
+		}
+	</script>
+</html>

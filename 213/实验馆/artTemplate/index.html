@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<title></title>
+	</head>
+	
+	<body>
+		<div id="container"></div>
+	</body>
+	<script src="../../js/artTextmplate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script id="demo" type="text/html">
+	
+		<div id="nav">
+			{{if !(SAIA && AAA)}}
+			<div class="menu-main">
+				{{each SAIC as value i}}
+				<li class="nav-menu">
+					<a href="javascript:void(0);">{{value}}</a>
+				</li>
+				{{/each}}
+			</div>
+			{{/if}}
+		</div>
+		<!--</div>
+		<div class="filter-content">
+			<div class="filter-section">
+				{{each list as value i}} {{each list[i] as value j}}
+				<div class="filter-list">
+					{{each list[i][j] as value k}}
+					<a href="javascript:void(0);" class="filter-sel">{{value}}</a>
+					{{/each}}
+				</div>
+				{{/each}} {{/each}}
+			</div>
+		</div>-->
+	</script>
+
+	<script>
+		var data = {
+			SAIC:[
+				{
+					address:null,
+					brandCode:"Roewe",
+					canInputCtpModelName:null,
+					city:"320200",
+					dealerCode:"SC00061",
+					dealerName:"无锡名盛汽车销售服务有限公司",
+					loanNo:null,
+					manufactory:"SAIC",
+					province:"320000"
+				}
+			],
+			SGM:[
+				{
+					address:null,
+					brandCode:"Buick",
+					canInputCtpModelName:null,
+					city:"370300",
+					dealerCode:"BK20006",
+					dealerName:"别克山东测试",
+					loanNo:null,
+					manufactory:"SGM",
+					province:"370000"
+				},
+				{
+					address:null,
+					brandCode:"Buick",
+					canInputCtpModelName:null,
+					city:"510100",
+					dealerCode:"BK2000602SA",
+					dealerName:"四川测试",
+					loanNo:null,
+					manufactory:"SGM",
+					province:"510000"
+				},
+				
+			],
+			SVW:[
+				{
+					address:null,
+					brandCode:"VW",
+					canInputCtpModelName:null,
+					city:null,
+					dealerCode:"BK2016003",
+					dealerName:"四川国寿财测试环境",
+					loanNo:null,
+					manufactory:"SVW",
+					province:"510000"
+				}
+			]
+		}
+		var html = template('demo', data);	//传进去的值，里面循环直接选择data的子级
+		document.getElementById('container').innerHTML = html;
+		/*//注册tabs方法
+		$(document).on('click', 'a', function(e) {
+			var target = $(e.currentTarget).parent();
+			var $self = $(target);
+			if(target.hasClass("nav-menu")) {
+				$(".filter-list").hide();
+				$(".sub-nav-items").hide().eq($self.index()).show();
+			} else if(target.hasClass("nav-item")) {
+				$(".filter-list").hide().eq($(".nav-item").index($self)).show();
+			}
+		})*/
+	</script>
+
+</html>

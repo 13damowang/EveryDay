@@ -9,8 +9,12 @@
 
 
 <body>
-
-
+  a<input type="text" id="aaa">
+  b<input type="text" id="bbb">
+  c<input type="text" id="ccc">
+  d<input type="text" id="ddd">
+  <div id="div">按钮</div>
+  
 </body>
 
 
@@ -19,19 +23,31 @@
 <script src="js/jquery-1.11.0.js" charset="utf-8"></script>
 <script type="text/javascript">
   //添加get方法，实现读值
-  Object.prototype.get = function (key, val) {
-    if(this[key]){
-      return this[key]
+  // Object.prototype.get = function (key, val) {
+  //   if(this[key]){
+  //     return this[key]
+  //   } else {
+  //     if(this[val]){
+  //       return this[val]
+  //     }
+  //   }
+  // }
+  // var parme = {
+  //   'name': 'balal',
+  //   'age': 23
+  // }
+  // alert(parme.get('name'))
+
+  $('#div').click(function () {
+    var a = $('#aaa').val()
+    var b = $('#bbb').val()
+    var c = $('#ccc').val()
+    var d = $('#ddd').val()
+    if((!!a !== !!b) || (!!c !== !!d) || (!a && !b && !c && !d)){
+      alert('false')
     } else {
-      if(this[val]){
-        return this[val]
-      }
+      alert('true')
     }
-  }
-  var parme = {
-    'name': 'balal',
-    'age': 23
-  }
-  alert(parme.get('name'))
+  })
 </script>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <input id="aa" type="text"> -->
+  /b
+  <div id="aa">12312<br>33123123</div>
+</body>
+<script src="../../js/jquery-1.11.0.js" charset="utf-8"></script>
+<script type="text/javascript">
+  var reg=[/\r\n\b\f\t/g];
+  // $('#aa').change(function () {
+    // $(this).val($(this).val().replace(reg,","))
+  // })
+  var aa = '1\b'
+  aa = aa.replace(/(\r\n|\n|\r)/gm,"a")
+  console.log(aa)
+</script>
+</html>

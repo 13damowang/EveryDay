@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="zz">
+    DOMContentLoaded事件是在html加载完毕之后执行，可以获取到DOM元素
+    load事件是在页面全部加载完毕之后(包括js，css等)，才会触发的函数
+    必要时候可以在DOMContentLoaded事件中获取DOM元素
+  </div>
+</body>
+<script type="text/javascript">
+  var zz = document.getElementById('zz')
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log(zz)
+  }, false);
+  window.addEventListener('load', function () {
+    console.log(zz)
+  })
+</script>
+</html>

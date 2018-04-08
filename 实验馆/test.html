@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+//Fn.dealerCallback(data.dealerInfo, data.mktActivityList)
+  if(data.dealerInfo) {
+    Fn.dealerCallback(data.dealerInfo, data.mktActivityList)
+  }
+  //Options.timeConfig = {
+  var baseTimeConfig = {
+    /*
+  精确输入vin码查询
+   */
+  Fn.accurateVin = function () {
+    $_post('/dim-api/policyentry/vehicle/' + Req.dealerCode + '/' + Req.brandCode + '/' + Req.vin, {} ,function (data) {
+      if (!data || data.length < 1) {
+        $_notify('未查询到任何数据，请确认您输入的VIN码', true)
+        return false
+      }
+      if (data && data.length > 1) {
+        Data.vinComplete = data
+        ngDialog.open({
+          template: 'vinList',
+          className: 'ngdialog-theme-default vinList',
+          name: 'vinList',
+          chooseDealer: false,
+          scope: $scope
+        })
+      }
+      if (data && data.length === 1) {
+        Req.modelCode = data[0].modelCode
+        Req.modelName = data[0].modelName
+        Req.brandName = data[0].jyBrandName
+        Req.seatCount = data[0].seatCount
+        Req.familyName = data[0].jySeriesName
+        Req.purchasePrice = data[0].purchasePrice
+        Req.engineNo = data[0].engineNo
+        Req.vin = data[0].vin
+      }
+    })
+  }
+
+  Fn.vinSelected = function (item) {
+    Req.modelCode = item.modelCode
+    Req.modelName = item.modelName
+    Req.brandName = item.jyBrandName
+    Req.seatCount = item.seatCount
+    Req.familyName = item.jySeriesName
+    Req.purchasePrice = item.purchasePrice
+    Req.engineNo = item.engineNo
+    Req.vin = item.vin
+    ngDialog.closeAll();
+  }
+
+  Fn.keyUpVin = function (e) {
+    var keycode = window.event ? e.keyCode : e.which;
+     if(keycode == 13){
+       if(Req.vin.length >= 6){
+         Fn.accurateVin()
+       }
+     }
+  }
+
+  Fn.changeVin = function () {
+    if (Req.vin.length === 17) {
+      Fn.searchVin()
+    }
+  }
+
+  .ngdialog.ngdialog-theme-default.vinList {
+  .ngdialog-content {
+    width: 1000px;
+
+    .modal-body {
+      padding: 25px;
+      height: 400px;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      table {
+        width: 100%;
+        border: 1px solid #dddddd;
+
+        thead {
+
+          tr {
+            text-align: left;
+
+            th {
+              border-bottom: 1px #ccc solid;
+              padding: 6px;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            border-bottom: 1px solid #dddddd;
+            cursor: pointer;
+
+            &:hover {
+              background: #fff4d2;
+            }
+
+            td {
+              padding: 8px
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</script>
+
+<script type="text/ng-template" id="vinList">
+  <h3>请选择车辆信息</h3>
+  <div class="modal-body">
+    <table>
+      <thead>
+        <tr>
+          <th width="50">序号</th>
+          <th width="230">车架号(vin)</th>
+          <th width="200">发动机号</th>
+          <th>车型名称</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in Data.vinComplete" ng-click="Fn.vinSelected(item)">
+          <td>{{$index + 1}}</td>
+          <td>{{item.vin}}</td>
+          <td>{{item.engineNo}}</td>
+          <td>{{item.modelName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</script>
+<p><input type="text" ng-model="Req.vin" ng-change="Fn.changeVin()" ng-keyup="Fn.keyUpVin($event)" id="vin" maxlength="17" /></p>
+</html>

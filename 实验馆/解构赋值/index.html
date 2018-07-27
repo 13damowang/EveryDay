@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+  const arr = {
+    name: 'ab',
+    age: '15'
+  }
+
+  let {name, age} = arr
+  console.log(name) //ab
+  console.log(age) //15
+
+  let nbaStars=['yaoming','kobe','james','paul']
+  let [chinaStar,...usaStar] = nbaStars
+  let [,,,myidol] = nbaStars
+  console.log(usaStar,chinaStar,myidol)
+</script>
+</html>

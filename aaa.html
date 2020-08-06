@@ -5,51 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+   
+  </style>
+  <script src="js/angular1.2.28.js"></script>
+  <script>
+    function foo (name,old) {
+      this.name = name
+      this.old  = old
+    }
+    const fooo = new foo('wang',13)
+    var obj = {}
+    obj.__proto__ = null
+    console.log(obj.__proto__)
+    console.log(Reflect.getPrototypeOf(obj))
+</script>
 </head>
 <body>
-  <div id="item">
-    <ul id="ul">
-      <li>打印</li>
-      <li>复制</li>
-    </ul>
-  </div>
-
 
 </body>
-<style>
-  #item {
-    width: 30px;
-    height: 30px;
-    background: #888;
-    position: relative;
-  }
-  ul {
-    display: none;
-    position: absolute;
-    top: 28px;
-    padding: 0px;
-    margin: 0px;
-  }
-  ul li {
-    width: 50px;
-    background: #f66;
-  }
-  ._hide {
-    display: none;
-  }
-  ._show{
-    display: block
-  }
-</style>
-<script src="angular1.2.28.js" charset="utf-8"></script>
-<script type="text/javascript">
-  var $div = angular.element(document.getElementById('item'))
-  var $ul = angular.element(document.getElementById('ul'))
-  $div.on('mouseenter',function(){
-    $ul.removeClass('_hide').addClass('_show');
-  })
-  $div.on('mouseleave', function () {
-    $ul.removeClass('_show').addClass('_hide');
-  })
-</script>
 </html>

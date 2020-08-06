@@ -22,6 +22,9 @@
 
 <script src="js/jquery-1.11.0.js" charset="utf-8"></script>
 <script type="text/javascript">
+
+
+
   //添加get方法，实现读值
   // Object.prototype.get = function (key, val) {
   //   if(this[key]){
@@ -38,16 +41,25 @@
   // }
   // alert(parme.get('name'))
 
-  $('#div').click(function () {
-    var a = $('#aaa').val()
-    var b = $('#bbb').val()
-    var c = $('#ccc').val()
-    var d = $('#ddd').val()
-    if((!!a !== !!b) || (!!c !== !!d) || (!a && !b && !c && !d)){
-      alert('false')
-    } else {
-      alert('true')
-    }
-  })
+  // $('#div').click(function () {
+  //   var a = $('#aaa').val()
+  //   var b = $('#bbb').val()
+  //   var c = $('#ccc').val()
+  //   var d = $('#ddd').val()
+  //   if((!!a !== !!b) || (!!c !== !!d) || (!a && !b && !c && !d)){
+  //     alert('false')
+  //   } else {
+  //     alert('true')
+  //   }
+  // })
+  var total = [1,2,3]
+  function foo () {
+    total = total.reduce(function (accumulator, current) {
+      console.log(accumulator, current)
+      return accumulator + current
+    }, 0)
+  }
+  foo()
+  // console.log(total)
 </script>
 </html>

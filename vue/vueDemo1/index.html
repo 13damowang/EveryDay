@@ -1,0 +1,77 @@
+<!--
+ * @Date: 2019-12-24 17:34:04
+ * @LastEditors  : wang
+ * @LastEditTime : 2019-12-27 17:11:57
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        vue双向绑定<input type="text" v-model="message">
+        
+        <!-- 响应式表达需要加上v-bind:(缩写:) -->
+
+        <div :title="message">{{message}}</div>
+        <!-- <h1>{{message}}</h1>
+        <p class="test1">{{methodTest()}}</p>
+        <p class="test2-1">{{methodTest()}}</p>
+        <p class="test2-2">{{methodTest()}}</p>
+        <p class="test2-3">{{methodTest()}}</p>
+        <p class="test3-1">{{computedTest}}</p>
+        <p class="test3-2">{{computedTest}}</p> -->
+        <button @click="addTest()">添加文字</button>
+        <ul>
+            <template-view v-for="item in tamplateMes" :todo='item' :key="item.id"></template-view>
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.component('template-view', {
+        //组件标签<template-view></template-view>
+        //props: 父组件传值给子组件
+        template: `<li>{{todo.text}}</li>`,
+        props: ['todo']
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'mess',
+            tamplateMes: [
+                {
+                    id: 0,
+                    text: 'angualr'
+                },
+                {
+                    id: 1,
+                    text: 'vue'
+                }, {
+                    id: 2,
+                    text: 'react'
+                }
+            ]
+        },
+        methods: {
+            // methodTest () {
+            //     console.log('methods')
+            //     return this.message + '现在我用的是methods'
+            // }
+            addTest () {
+                return this.message = `${this.message}添加文字`
+            }
+        },
+        computed: {
+            computedTest () {
+                console.log('computed')
+                return this.message + '现在我用的是computed'
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChromeReloadPlus</title>
+  <link rel="stylesheet" type="text/css" href="vendor/spectre.min.css" />
+  <link rel="stylesheet" type="text/css" href="vendor/spectre-icons.min.css" />
+  <script type="text/javascript" src="vendor/jquery.slim.min.js"></script>
+  <script type="text/javascript" src="js/options.js"></script>
+  <style type="text/css">
+    @keyframes status-success-fade-out {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #main {
+      white-space: nowrap;
+      margin-top: 2em;
+      margin-bottom: 2em;
+      padding: 0 1.2em 1.2em 1.2em;
+    }
+
+    #logo {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: top;
+    }
+
+    .form-group .status-success {
+      visibility: hidden;
+      opacity: 1;
+      display: inline-block;
+      line-height: 1em;
+      height: 1em;
+    }
+
+    .form-group .status-success.fade-out {
+      animation-name: status-success-fade-out;
+      animation-duration: 2s;
+      visibility: visible;
+    }
+
+    .form-group .status-success .icon,
+    .form-group .status-success small {
+      vertical-align: bottom;
+    }
+
+    #option-custom .status-success {
+      position: relative;
+      margin-left: .2rem;
+      top: .5em;
+    }
+
+    #option-custom .form-radio {
+      padding-right: 0;
+    }
+
+    #option-custom input[name=option-custom] {
+      max-width: 5.2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main" class="container grid-xs">
+    <div class="columns">
+      <div class="column col-12">
+        <h1><img id="logo" src="images/logo-128.png" class="d-inline-block"> <span>ChromeReloadPlus</span></h1>
+        <div class="divider"></div>
+        <div class="form-group">
+          <label class="form-label">Toggle reload by hotkey:</label>
+          <p><kbd>Ctrl + Alt + R</kbd> or <kbd>Ctrl + Alt + F5</kbd></p>
+        </div>
+        <div class="divider"></div>
+        <div class="form-group">
+          <label class="form-label">Default reload interval by hotkey:</label>
+        </div>
+        <div id="option-0" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="0">
+            <i class="form-icon"></i> never <small class="label">i.e. no reload</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-5" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="5">
+            <i class="form-icon"></i> 5 <small>seconds</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-15" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="15">
+            <i class="form-icon"></i> 15 <small>seconds</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-30" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="30">
+            <i class="form-icon"></i> 30 <small>seconds</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-60" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="60">
+            <i class="form-icon"></i> 1 <small>minute</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-120" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="120">
+            <i class="form-icon"></i> 2 <small>minutes</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-300" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="300">
+            <i class="form-icon"></i> 5 <small>minutes</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-900" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="900">
+            <i class="form-icon"></i> 15 <small>minutes</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-1800" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="1800">
+            <i class="form-icon"></i> 30 <small>minutes</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-random" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="random">
+            <i class="form-icon"></i> random <small class="label">5sec~30min</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </label>
+        </div>
+        <div id="option-custom" class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <label class="form-radio">
+                <input type="radio" name="option" value="custom">
+                <i class="form-icon"></i>
+              </label>
+            </span>
+            <input type="number" name="option-custom" class="form-input" placeholder="min 1" min="1" max="99999">
+            <small class="input-group-addon">seconds</small>
+            <span class="status-success text-success">
+              <i class="icon icon-check"></i> <small>saved</small>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>

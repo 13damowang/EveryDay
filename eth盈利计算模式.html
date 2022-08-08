@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label>
+    <input type="radio" name="money" id="add">做多
+  </label>
+  <label>
+    <input type="radio" name="money" id="sell">做空
+  </label>
+  <label>
+    <input type="radio" name="eth" id="eth">开仓ETH
+  </label>
+  <label>
+    <input type="radio" name="eth" id="u">开仓U
+  </label>
+  <div>
+    <span>ETH数量</span>
+    <input type="text" id="numEth">U
+  </div>
+  <div>
+    <span>开仓价格</span>
+    <input type="text" id="nowU">U
+  </div>
+  <div>
+    <span>平仓价格</span>
+    <input type="text" id="futureU">U
+  </div>
+  <div>
+    <span>合约金额</span>
+    <input type="text" id="money">U
+  </div>
+  <div>
+    <span>开仓倍数
+    <input type="text" id="multiple">倍
+    </span>
+  </div>
+  <div>
+    <button id="calculate" onclick="calculateClick();">计算</button>
+  </div>
+  <div id="text"></div>
+</body>
+
+<script>
+  let add = document.getElementById('add')
+  let sell = document.getElementById('sell')
+  let eth = document.getElementById('eth')
+  let u = document.getElementById('u')
+  let numEth = document.getElementById('numEth')
+  let nowU = document.getElementById('nowU')
+  let futureU = document.getElementById('futureU')
+  let money = document.getElementById('money')
+  let multiple = document.getElementById('multiple')
+  let calculate = document.getElementById('calculate')
+  let text = document.getElementById('text')
+
+  function calculateClick () {
+    /*
+      合约盈利计算模式 = (开仓价格-平仓价格)/开仓价格*开仓倍数*合约金额
+      挖卖提盈利计算模式 = (第一次挖卖提价格-第二次挖卖提)*挖卖提ETH的产量
+    */
+   let result = (nowU.value - futureU.value) / nowU.value * multiple.value * money.value
+   let result2 = (nowU.value - futureU.value) / nowU.value * multiple.value * numEth.value
+   if (isNaN(result)) {
+     result = '少信息，无法算'
+    } else {
+      if (eth.checked) {
+        console.log(result2);
+        if (sell.checked) {
+          if ((nowU.value - futureU.value) > 0 && result2 > 0) {
+            text.innerHTML = result2*-1 + 'eth'
+          }
+          if ((nowU.value - futureU.value) < 0 && result2 < 0) {
+            text.innerHTML = result2 + 'eth'
+          }
+        } else {
+          text.innerHTML = result2 + 'eth'
+        }
+      } else {
+        if (sell.checked) {
+          if ((nowU.value - futureU.value) > 0 && result > 0) {
+            text.innerHTML = result*-1 + 'U'
+          }
+          if ((nowU.value - futureU.value) < 0 && result < 0) {
+            text.innerHTML = result + 'U'
+          }
+        } else {
+          text.innerHTML = result + 'U'
+        }
+      }
+    }
+  }
+</script>
+</html>

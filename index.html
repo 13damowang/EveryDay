@@ -22,16 +22,40 @@
 
 <!-- <script src="js/jquery-1.11.0.js" charset="utf-8"></script> -->
 <script type="text/javascript">
-     function* fibs() {
-  let a = 0;
-  let b = 1;
-  while (true) {
-    yield a;
-    console.log(a);
-    [a, b] = [b, a + b];
+
+
+
+  //添加get方法，实现读值
+  // Object.prototype.get = function (key, val) {
+  //   if(this[key]){
+  //     return this[key]
+  //   } else {
+  //     if(this[val]){
+  //       return this[val]
+  //     }
+  //   }
+  // }
+  // var parme = {
+  //   'name': 'balal',
+  //   'age': 23
+  // }
+  // alert(parme.get('name'))
+
+  // $('#div').click(function () {
+  //   var a = $('#aaa').val()
+  //   var b = $('#bbb').val()
+  //   var c = $('#ccc').val()
+  //   var d = $('#ddd').val()
+  //   if((!!a !== !!b) || (!!c !== !!d) || (!a && !b && !c && !d)){
+  //     alert('false')
+  //   } else {
+  //     alert('true')
+  //   }
+  // })
+  // console.log(total)
+  btn = () => {
+    var a = window.open('file:///Users/thirteen/EveryDay/aaa.html')
+    a.postMessage({name: '俄式'}, "*")
   }
-}
-let [first, second] = fibs();
-console.log(second);
 </script>
 </html>

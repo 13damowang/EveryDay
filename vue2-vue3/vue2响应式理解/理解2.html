@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /*
+  Object.defineProperty由于在修改值的时候需要用一个变量来中转接收修改的值，所以封装一个函数搭建一个闭包环境
+  */
+
+  function defineReactive (data, key, val) {
+    Object.defineProperty(data, key, {
+      get () {
+        console.log(`你正在访问${key}属性`)
+        return val
+      },
+      set (newValue) {
+        if (val === newValue) return  //监测重复性
+        console.log(`你正在修改${key}属性`)
+        val = newValue
+      }
+    })
+  }
+
+  let obj = {}
+  defineReactive(obj, 'a', 10)
+  console.log(obj.a)  //被监测到访问属性
+  obj.a = 20    //被监测到修改属性
+  console.log(obj.a)  //属性a已经被修改成20
+</script>
+</html>

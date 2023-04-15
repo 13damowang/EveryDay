@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view>
+  主页
+</view>
+<my-test1 max="11"></my-test1>
+<my-test2></my-test2>
+<my-test3>
+  <view slot="slot1">
+    这是要填充到插槽slot1中的内容
+  </view>
+</my-test3>
+
+<view>
+  父组件中count值是{{count}}
+</view>
+<my-test4 count="{{count}}" bindsync="syncFn" id="childDom"></my-test4>
+<button bindtap="getChild">获取子组件的实例</button>

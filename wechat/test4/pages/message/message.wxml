@@ -1,0 +1,21 @@
+<!--pages/message/message.wxml-->
+<view>
+  count值是：{{count}}
+</view>
+<button bindtap="addOne">每次+1</button>
+<view>
+  {{name}}
+  调用m1模块中的方法{{m1.toUpper(name)}}
+</view>
+<view>
+  {{upperName}}
+  调用m2模块中的方法{{m2.toLower(upperName)}}
+</view>
+<wxs module="m1"
+>
+  module.exports.toUpper = function (str) {
+    return str.toUpperCase()
+  }
+</wxs>
+
+<wxs src="../../utils/tools.wxs" module="m2"/>

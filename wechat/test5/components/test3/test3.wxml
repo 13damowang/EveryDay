@@ -1,0 +1,8 @@
+<!--components/test3/test3.wxml-->
+<view>
+  <slot name="slot1"></slot>
+  <view>
+    这里是组件3的内部结构
+  </view>
+  <slot name="slot2"></slot>
+</view>

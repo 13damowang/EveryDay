@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /*
+  浅拷贝是创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝就是基本类型的值
+  如果属性是引用类型，拷贝的就是内存地址，所以如果其中一个对象改变了这个地址，就会影响到另一个对象
+  深拷贝是将一个对象从内存中完整的拷贝一份出来，从堆内存中开辟一个新的区域存放新对象，且修改新对象不会影响原对象
+
+  浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。
+  但深拷贝会另外创造一个一模一样的对象，新对象和原对象不共享内存，修改新对象不会改到原对象
+  */
+
+  //对象赋值/浅拷贝/深拷贝 修改新对象对原对象的影响
+  
+  //对象赋值
+  let obj1 = {
+    name: '测试',
+    arr: [1,2,3]
+  }
+  let obj2 = obj1
+  obj2.name = '测试改变'
+  obj2.arr = [4,5,6]
+  console.log('obj1', obj1) //name:测试改变,arr:[4,5,6]
+  console.log('obj2', obj2) //name:测试改变,arr:[4,5,6]
+
+  //浅拷贝
+  let obj3 = {
+    name: '测试',
+    arr: [1,2,3]
+  }
+  function shallowClone (source) {
+    var target = {}
+    for (var i in source) {
+      if (source.hasOwnProperty(i)) {
+        target[i] = source[i]
+      }
+    }
+    return target
+  }
+  let obj4 = shallowClone(obj3)
+  obj4.name = '测试改变'
+  obj4.arr[0] = 4
+  console.log('obj3', obj3) //name:测试,arr:[4,2,3]
+  console.log('obj4', obj4) //name:测试改变,arr:[4,2,3]
+
+  //深拷贝
+  let obj5 = {
+    name: '测试',
+    arr: [1,2,3]
+  }
+  function deepClone (obj) {
+    if (obj === null) return obj
+    if (obj instanceof Date) return new Date(obj)
+    if (obj instanceof RegExp) return new RegExp(obj)
+    if (typeof obj !== 'object') return obj
+    let cloneObj = new obj.constructor()
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        cloneObj[key] = deepClone(obj[key])
+      }
+    }
+    return cloneObj
+  }
+  let obj6 = deepClone(obj5)
+  obj6.name = '测试改变'
+  obj6.arr[0] = 4
+  console.log('obj5', obj5) //name:测试,arr:[1,2,3]
+  console.log('obj6', obj6) //name:测试改变,arr:[4,2,3]
+
+  //浅拷贝的实现方式
+  //Object.assign({}, obj)
+  //...obj
+  //concat()
+  //slice()
+  let obj7 = {
+    name: '测试',
+    arr: [1,2,3]
+  }
+  let obj8 = Object.assign({}, obj7)
+  obj8.name = '测试改变'
+  obj8.arr[0] = 4
+  console.log('obj7', obj7)  //name:测试,arr:[4,2,3]
+  console.log('obj8', obj8)  //name:测试改变,arr:[4,2,3]
+
+  //深拷贝的实现方式
+  //Json.parse(JSON.stringify(obj))
+</script>
+</html>

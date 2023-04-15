@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //声明一个set集合
+  let s = new Set()
+  //set方法可以去重
+  let s2 = new Set([1,2,3,4,5,5,6])
+  console.log(s2)   //[1,2,3,4,5,6]
+
+  /*
+  关于set的其他方法
+  查询元素个数size
+  增加元素add()
+  删除元素delete()
+  检测是否包含指定元素has()
+  清空数据clear()
+  set构建出来的数据是可以使用for of来遍历出数据
+  */
+  console.log(s2.size)    //6
+  s2.add(7)   //[1,2,3,4,5,6,7]
+  s2.delete(1) //[2,3,4,5,6,7]
+  s2.has(2)   //true
+  s2.clear()    //清空
+
+  //注意：set不是一个数组，他是集合，如果要转变成数组可以使用扩展运算符[...arr]
+  //数组去重
+  let arr = [1,2,3,1,2,3,4,5]
+  let arrResult = [...new Set(arr)]
+  console.log(arrResult)  //[1,2,3,4,5]
+  //交集
+  let arr2 = [4,5,6,5,6]
+  let result2 = arrResult.filter(item => {
+    let arr2Result = new Set(arr2)  //4 5 6
+    if (arr2Result.has(item)) {
+      console.log(item);
+      return true
+    } else {
+      return false
+    }
+  })
+  console.log(result2); //[4,5]
+  //交集
+  let arr3 = [...new Set([...arr, ...arr2])]
+  console.log(arr3)   //[1,2,3,4,5,6]
+</script>
+</html>

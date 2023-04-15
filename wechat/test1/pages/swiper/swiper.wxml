@@ -1,0 +1,27 @@
+<!--pages/swiper/swiper.wxml-->
+<!-- indicator-dots 是否显示面板指示点
+autoplay 是否自动切换
+interval 自动切换时间间隔
+circular 是否采用衔接滑动 -->
+<swiper class="box" indicator-dots="true" indicator-color="red" indicator-active-color="green" autoplay="true" interval="1000" circular>
+  <swiper-item>
+    <view>
+      A
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>
+      B
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view>
+      C
+    </view>
+  </swiper-item>
+</swiper>
+
+<!-- user-select 文本是否可以被选中 -->
+<view>
+  <text user-select>123456789</text>
+</view>

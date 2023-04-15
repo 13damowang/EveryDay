@@ -1,0 +1,15 @@
+<!--pages/button/button.wxml-->
+<!-- 更改颜色：primary，warn
+更改大小和内联 mini
+更改镂空 plain -->
+<button>测试</button>
+<button type="primary">主色按钮</button>
+<button type="warn">警告按钮</button>
+
+<button size="mini">测试</button>
+<button type="primary" size="mini">主色按钮</button>
+<button type="warn" size="mini">警告按钮</button>
+
+<button size="mini" plain>测试</button>
+<button type="primary" size="mini" plain>主色按钮</button>
+<button type="warn" size="mini" plain>警告按钮</button>

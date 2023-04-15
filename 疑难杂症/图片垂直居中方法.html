@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* 方法1:通过flex方法来实现图片垂直居中 */
+  .box1 {
+    width: 200px;
+    height: 200px;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .box1 img {
+    width: 100px;
+  }
+
+  /* 方法2:通过包裹一个父元素设置样式table，包裹图片的父元素设置display:table-cell */
+  #box2 {
+    width: 200px;
+    height: 200px;
+    background: #444;
+    display: table;
+  }
+  #box2 .box2 {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  #box2 .box2 img {
+    width: 100px;
+  }
+
+  /* 方法3:利用定位来使得图片垂直居中，图片top和left:50%，再利用transform: translate(-50%, -50%)拉回图片位置*/
+  .box3 {
+    width: 200px;
+    height: 200px;
+    background: #555;
+    position: relative;
+    text-align: center;
+  }
+  .box3 img {
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<body>
+    <div class="box1">
+      <img src="./images/20220121.png" alt="">
+    </div>
+    <div id="box2">
+      <div class="box2">
+        <img src="./images/20220121.png" alt="">
+      </div>
+    </div>
+    <div class="box3">
+      <img src="./images/20220121.png" alt="">
+    </div>
+</body>
+</html>

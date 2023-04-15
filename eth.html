@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div> 
+    <span>挖卖提ETH的产量</span>
+    <input type="text" id="production">eth
+  </div>
+  <div>
+    <span>第一次挖卖提的ETH价格</span>
+    <input type="text" id="oneSell">U
+  </div>
+  <div>
+    <span>第二次挖卖提的ETH价格</span>
+    <input type="text" id="twoSell">U
+  </div>
+  <div>
+    <span>开仓价格</span>
+    <input type="text" id="nowU">U
+  </div>
+  <div>
+    <span>平仓价格</span>
+    <input type="text" id="futureU">
+  </div>
+  <div>
+    <span>合约金额</span>
+    <input type="text" id="money">U
+  </div>
+  <div>
+    <span>开仓倍数
+    <input type="text" id="multiple">倍
+    </span>
+  </div>
+  <div>
+    <button id="calculate" onclick="calculateClick();">计算</button>
+  </div>
+  <div id="text"></div>
+</body>
+
+<script>
+  let production = document.getElementById('production')
+  let oneSell = document.getElementById('oneSell')
+  let twoSell = document.getElementById('twoSell')
+  let nowU = document.getElementById('nowU')
+  let futureU = document.getElementById('futureU')
+  let money = document.getElementById('money')
+  let calculate = document.getElementById('calculate')
+  let multiple = document.getElementById('multiple')
+  let text = document.getElementById('text')
+
+  function calculateClick () {
+    /*
+      合约盈利计算模式 = (开仓价格-平仓价格)/开仓价格*开仓倍数/10*合约金额
+      挖卖提盈利计算模式 = (第一次挖卖提价格-第二次挖卖提)*挖卖提ETH的产量
+    */
+   let result = (nowU.value - futureU.value) / nowU.value * multiple.value * money.value
+   let result2 = (oneSell.value - twoSell.value) * production.value
+   if (isNaN(result) || isNaN(result2)) {
+     result = '少信息，无法算'
+    } else {
+      if (result >= result2) {
+        text.innerHTML = '没亏本，总盈利' + (result*1 - result2*1) + 'U'
+      } else {
+        text.innerHTML = '亏本了，总亏损' + (result2*1 - result*1) + 'U'
+      }
+    }
+  }
+</script>
+</html>

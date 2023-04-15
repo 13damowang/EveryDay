@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChromeReloadPlus</title>
+  <link rel="stylesheet" type="text/css" href="vendor/spectre.min.css" />
+  <link rel="stylesheet" type="text/css" href="vendor/spectre-icons.min.css" />
+  <script type="text/javascript" src="vendor/jquery.slim.min.js"></script>
+  <script type="text/javascript" src="js/popup.js"></script>
+  <style type="text/css">
+    #main {
+      white-space: nowrap;
+      padding: 0 1.2em 1.2em 1.2em;
+    }
+
+    #option-custom .form-radio {
+      padding-right: 0;
+    }
+
+    #option-custom input[name=option-custom] {
+      max-width: 5.2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main" class="container">
+    <div class="columns">
+      <div class="column col-12">
+        <div>
+          <small class="form-label">Reload this tab every:</small>
+        </div>
+        <div id="option-0" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="0">
+            <i class="form-icon"></i> never <small class="label">i.e. no reload</small>
+          </label>
+        </div>
+        <div id="option-5" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="5">
+            <i class="form-icon"></i> 5 <small>seconds</small>
+          </label>
+        </div>
+        <div id="option-15" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="15">
+            <i class="form-icon"></i> 15 <small>seconds</small>
+          </label>
+        </div>
+        <div id="option-30" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="30">
+            <i class="form-icon"></i> 30 <small>seconds</small>
+          </label>
+        </div>
+        <div id="option-60" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="60">
+            <i class="form-icon"></i> 1 <small>minute</small>
+          </label>
+        </div>
+        <div id="option-120" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="120">
+            <i class="form-icon"></i> 2 <small>minutes</small>
+          </label>
+        </div>
+        <div id="option-300" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="300">
+            <i class="form-icon"></i> 5 <small>minutes</small>
+          </label>
+        </div>
+        <div id="option-900" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="900">
+            <i class="form-icon"></i> 15 <small>minutes</small>
+          </label>
+        </div>
+        <div id="option-1800" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="1800">
+            <i class="form-icon"></i> 30 <small>minutes</small>
+          </label>
+        </div>
+        <div id="option-random" class="form-group">
+          <label class="form-radio">
+            <input type="radio" name="option" value="random">
+            <i class="form-icon"></i> random <small class="label">5sec~30min</small>
+          </label>
+        </div>
+        <div id="option-custom" class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <label class="form-radio">
+                <input type="radio" name="option" value="custom">
+                <i class="form-icon"></i>
+              </label>
+            </span>
+            <input type="number" name="option-custom" class="form-input" placeholder="min 1" min="1" max="99999">
+            <small class="input-group-addon">seconds</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>

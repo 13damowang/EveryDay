@@ -1,0 +1,4 @@
+<!--pages/images/image.wxml-->
+<!-- mode属性可以更改图片的裁剪比例设置 -->
+<image/>
+<image src="/image/20220121.png" mode="aspectFit"/>

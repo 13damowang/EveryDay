@@ -1,0 +1,7 @@
+<!--components/test2/test2.wxml-->
+<view class="backColor" style="background-color: rgb({{fullColor}});">
+  颜色是{{fullColor}}
+</view>
+<button bindtap="changeR" size="mini" type="default">R</button>
+<button bindtap="changeG" size="mini" type="primary">G</button>
+<button bindtap="changeB" size="mini" type="warn">B</button>

@@ -13,53 +13,25 @@
   b<input type="text" id="bbb">
   c<input type="text" id="ccc">
   d<input type="text" id="ddd">
-  <div id="div">按钮</div>
+  <div id="div" onclick="btn()">按钮</div>
   
 </body>
 
 
 
 
-<script src="js/jquery-1.11.0.js" charset="utf-8"></script>
+<!-- <script src="js/jquery-1.11.0.js" charset="utf-8"></script> -->
 <script type="text/javascript">
-
-
-
-  //添加get方法，实现读值
-  // Object.prototype.get = function (key, val) {
-  //   if(this[key]){
-  //     return this[key]
-  //   } else {
-  //     if(this[val]){
-  //       return this[val]
-  //     }
-  //   }
-  // }
-  // var parme = {
-  //   'name': 'balal',
-  //   'age': 23
-  // }
-  // alert(parme.get('name'))
-
-  // $('#div').click(function () {
-  //   var a = $('#aaa').val()
-  //   var b = $('#bbb').val()
-  //   var c = $('#ccc').val()
-  //   var d = $('#ddd').val()
-  //   if((!!a !== !!b) || (!!c !== !!d) || (!a && !b && !c && !d)){
-  //     alert('false')
-  //   } else {
-  //     alert('true')
-  //   }
-  // })
-  var total = [1,2,3]
-  function foo () {
-    total = total.reduce(function (accumulator, current) {
-      console.log(accumulator, current)
-      return accumulator + current
-    }, 0)
+     function* fibs() {
+  let a = 0;
+  let b = 1;
+  while (true) {
+    yield a;
+    console.log(a);
+    [a, b] = [b, a + b];
   }
-  foo()
-  // console.log(total)
+}
+let [first, second] = fibs();
+console.log(second);
 </script>
 </html>

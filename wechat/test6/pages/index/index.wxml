@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<van-button type="primary" bindtap="getInfo">按钮</van-button>
+
+<view>
+  {{numA}} + {{numB}} = {{sum}}
+</view>
+
+<!-- data-*="{{}}" 代表传入到字段为*，值为{{}}里面的值，
+  js中获取到值的方法是e.target.dataset.*
+ -->
+<van-button type="primary" bindtap="numAadd" data-step="{{1}}">numA +1</van-button>
+<van-button type="warning" bindtap="numAadd" data-step="{{-1}}">numA -1</van-button>
+<my-numbers></my-numbers>

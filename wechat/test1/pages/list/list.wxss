@@ -1,0 +1,36 @@
+/* pages/list/list.wxss */
+.box {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.box view {
+  width: 100px;
+  height: 100px;
+  background: chartreuse;
+  text-align: center;
+  line-height: 100px;
+}
+
+.box2 {
+  width: 100px;
+  height: 120px;
+}
+
+.box2 view {
+  width: 100px;
+  height: 100px;
+}
+
+.box2 view:nth-child(1) {
+  background: chartreuse;
+}
+
+.box2 view:nth-child(2) {
+  background: lightpink
+}
+
+.box2 view:nth-child(3) {
+  background: lightskyblue
+}

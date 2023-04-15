@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //Object.is 判断两个值是否完全相等
+  //Object.is和===很像，但是NaN===NaN 返回是false
+  console.log(Object.is(100,100)) //true
+  console.log(Object.is(100,111)) //false
+  console.log(Object.is(NaN,NaN)) //true
+
+  //Object.assign 对象的合并，key相同则后面覆盖前面
+  let a = {
+    a:1,
+    b:2,
+    c:3,
+    d:4
+  }
+  let b = {
+    a:11,
+    b:22,
+    c:33,
+    e:55
+  }
+  console.log(Object.assign(a,b)) //{a:11,b:22,c:33,d:4,e:55}
+
+  //Object.setPrototypeOf Object.getPrototypeOf 设置对象原型
+  let name = {
+    name: '测试1'
+  }
+  let name2 = {
+    name: ['测试2']
+  }
+  console.log(Object.setPrototypeOf(name,name2))  //name的原型对象中就有name2了
+  console.log(Object.getPrototypeOf(name))    //获取到name的原型对象中的name2
+</script>
+</html>

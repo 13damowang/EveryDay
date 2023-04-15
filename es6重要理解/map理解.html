@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /*
+    map数据结构类似于对象，也是键值对的集合，但是键的范围不限于字符串，各种类型的值（包括对象）都可以当作键
+    添加元素set(key, val)
+    获取长度size
+    删除delete(key)
+    根据key获取value的值 get(key)
+    清空clear()
+    map可以被for of遍历
+  */
+  let m = new Map()
+  m.set('name', '测试1')
+  m.set('click', function () {
+    console.log('添加点击事件');
+  })
+  let key = {
+    name: '测试2'
+  }
+  m.set(key, ['测试2的数组1', '测试2的数组2'])
+  console.log(m)
+  console.log(m.size) //3
+  m.delete('name') //删除key为name
+  m.get('click')  //function
+  m.clear()
+</script>
+</html>

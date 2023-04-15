@@ -1,0 +1,17 @@
+<!--pages/shopList/shopList.wxml-->
+<view class="shopItem"
+  wx:for="{{shopList}}"
+  wx:key="id"
+>
+  <view class="shopImg">
+    <image src="{{item.images[0]}}" mode=""/>
+  </view>
+  <view class="shopContent">
+    <text class="shopTitle">{{item.name}}</text>
+    <text>{{tools.splitPhone(item.phone)}}</text>
+    <text>{{item.address}}</text>
+    <text>{{item.businessHours}}</text>
+  </view>
+</view>
+
+<wxs src="/utils/tools.wxs" module="tools"/>

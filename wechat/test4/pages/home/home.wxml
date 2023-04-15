@@ -1,0 +1,36 @@
+<!--pages/home/home.wxml-->
+<!-- 轮播图 -->
+<swiper indicator-dots circular>
+  <swiper-item wx:for="{{swiperList}}" wx:key="id">
+    <image src="{{item.image}}" mode=""/>
+  </swiper-item>
+</swiper>
+
+<!-- 九宫格 -->
+<view class="gridList">
+  <navigator class="gridItem" wx:for="{{gridList}}" wx:key="id"
+  url="/pages/shopList/shopList?id={{item.id}}&title={{item.name}}"
+  >
+    <image src="{{item.icon}}" mode=""/>
+    <text>{{item.name}}</text>
+  </navigator>
+</view>
+
+<!-- 导航区域 -->
+<view class="imageBox">
+  <view class="navItem">
+    <navigator url="/pages/message/message" open-type="switchTab">跳转到消息页面</navigator>
+  </view>
+  <view class="navItem">
+    <navigator url="/pages/info/info">导航到非tabBar页面</navigator>
+  </view>
+  <view class="navItem">
+    <navigator url="/pages/contact/contact" open-type="switchTab">跳转到联系我们</navigator>
+  </view>
+  <button bindtap="navMes" type="primary" size="mini">按钮导航消息</button>
+  <button bindtap="navInfo" type="default" size="mini">按钮导航Info</button>
+</view>
+<view>
+  <navigator url="/pages/info/info?name=zxc">传参到info</navigator>
+  <button bindtap="paramsInfo" type="primary">点击事件传参到info</button>
+</view>

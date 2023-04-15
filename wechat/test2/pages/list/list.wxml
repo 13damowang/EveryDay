@@ -1,0 +1,38 @@
+<!--pages/list/list.wxml-->
+<text>{{info}}</text>
+<button type="primary" bindtap="btnTap">按钮测试</button>
+<button bindtap="add" data-item="{{2}}">测试+1功能</button>
+<!-- 事件传参data-*="{{}}" -->
+<button bindtap="paramadd" data-item="{{2}}">测试传参</button>
+<input bindinput="inputAdd"/>
+<input class="inputItem" value="{{msg}}" bindinput="inputView"/>
+<view wx:if="{{num <= 3}}">
+  数字小于3
+</view>
+<view wx:elif="{{num > 3 && num <= 7}}">
+  数字大于3且小于7
+</view>
+<view wx:elif="{{num > 7 && num <= 9}}">
+  数字大于7切小于9
+</view>
+<view wx:else>
+  默认展示
+</view>
+<button bindtap="mathRound" type="primary">随机数生成</button>
+<!-- 使用block标签可以包裹标签用来统一展示里面的内容 -->
+<view hidden="{{flag}}">
+  hidden隐藏显示
+</view>
+默认index和item循环展示
+<view wx:for="{{arr1}}">
+  索引{{index}}/内容{{item}}
+</view>
+自定义index和item循环展示
+<view wx:for="{{arr1}}" wx:for-index="id" wx:for-item="paramsItem">
+  索引{{id}}/内容{{paramsItem}}
+</view>
+
+循环遍历根据key来展示
+<view wx:for="{{arrObj1}}" wx:key="id" class="username">
+  {{item.name}}
+</view>

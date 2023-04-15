@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /*
+  //MVVM模式
+  Model- View - ViewModel
+  数据变化，视图也会自动变化
+
+  Object.defineProperty()
+  数据劫持/数据代理
+
+  MVC(Model-View-Controller（控制器）)
+  MVP(Model-View-Presenter（中间人）)
+
+  MVP和MVC的区别
+  MVC中间的通信都是单向的
+  MVP改变了通信方向，各部分之间的通信都是双向的，view和model部分不发生联系都通过Presenter传递
+  V -> P -> M，M -> P -> V
+  在MVC中，view和Model直接交互，读取数据，不通过Controller
+  在MVP中，View和Model不交互，而是通过Presenter与Controller进行交互，所有的交互都是发生在Presenter的内部
+  */
+
+  //利用Object.defineProperty给一个对象定义一个值
+  let obj = {}
+  Object.defineProperty(obj, 'a', {
+    get () {
+      console.log('访问了a属性')
+      return 11 //get需要一个返回值，来决定该属性的值是多少，默认为undefined
+    },
+    set (value) { //value为修改的值
+      console.log('改变了a属性');
+    }
+  })
+  Object.defineProperty(obj, 'b', {
+    value: 2,
+    enumerable: true, //是否可以被枚举（遍历出来）
+    writable: false, //是否可以被修改值
+  })
+  obj.b++ //b:2
+  console.log(obj)
+  for (var m in obj) { 
+    console.log(m); //遍历出现b
+  }
+  console.log(obj.a)  //监测到了访问了a属性
+  obj.a = 1 //监测到了改变了a属性
+
+</script>
+</html>

@@ -42,8 +42,7 @@
 				{
 					"path": "search/index",
 					"style": {
-						"navigationBarTitleText": "search",
-						"navigationStyle": "custom"
+						"navigationBarTitleText": "search"
 					}
 				}
 			]

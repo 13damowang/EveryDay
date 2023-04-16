@@ -19,7 +19,7 @@
             <view class="right-image-item"
             v-for="(item, index) in item.children"
             :key="index"
-            @click="goToshopDetail(item)"
+            @click="goToShopList(item)"
             >
               <image
                 :src="item.cat_icon"
@@ -85,9 +85,9 @@ export default {
       this.scrollTop = this.scrollTop === 0 ? 1 : 0
     },
 
-    goToshopDetail (item) {
+    goToShopList (item) {
       uni.navigateTo({
-         url: `/subpkg/shopDetail/index?cid=${item.cat_pid}`
+         url: `/subpkg/shopList/index?cid=${item.cat_pid}`
       });
     },
 

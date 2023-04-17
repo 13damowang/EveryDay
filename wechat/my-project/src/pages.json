@@ -36,7 +36,10 @@
 				{
 					"path": "shopList/index",
 					"style": {
-						"navigationBarTitleText": "shopList"
+						"navigationBarTitleText": "shopList",
+						"onReachBottomDistance": 150,
+						"enablePullDownRefresh": true,
+						"backgroundColor": "#eee"
 					}
 				},
 				{

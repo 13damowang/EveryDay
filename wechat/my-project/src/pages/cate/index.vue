@@ -104,7 +104,6 @@ export default {
   // 页面周期函数--监听页面加载
   onLoad() {
     const sysInfo = uni.getSystemInfoSync();
-      console.log(sysInfo)
       //这里的50代表搜索组件的高度，修复可用高度不正确的bug
       this.wh = sysInfo.windowHeight - 50
       //获取分类列表

@@ -1,9 +1,9 @@
 <template>
   <view>
     <view class="shopList">
-      <block v-for="(item, index) in shopList">
+      <view v-for="(item, index) in shopList" @click="gotoShopDeatil(item.goods_id)">
         <my-shops :Req="item"></my-shops>
-      </block>
+      </view>
     </view>
   </view>
 </template>
@@ -54,6 +54,14 @@ export default {
         }
       });
     },
+
+    gotoShopDeatil (id) {
+      uni.navigateTo({
+        url: `/subpkg/shopDetail/index?goods_id=${id}`
+      })
+    }
+
+
   },
   watch: {},
 

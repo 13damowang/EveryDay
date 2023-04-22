@@ -37,8 +37,10 @@
 
 <script>
 import search from '../../components/search.vue'
+import badgeMix from '@/mixins/tarbar-badge'
 export default {
   components: { search },
+  mixins: [badgeMix],
   data() {
     return {
       wh: 0,  //当前设备的高度

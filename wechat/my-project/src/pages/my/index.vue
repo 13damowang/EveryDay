@@ -3,8 +3,10 @@
 </template>
 
 <script>
+import badgeMix from '@/mixins/tarbar-badge'
 export default {
   components: {},
+  mixins: [badgeMix],
   data() {
     return {}
   },

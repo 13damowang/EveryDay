@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import './uni.promisify.adaptor'
+import store from '@/store/store'
 
 //挂载接口域名
 uni.$beseUrl = 'https://api-hmugo-web.itheima.net'
@@ -37,8 +38,8 @@ uni.$showMeg = function (title = '数据加载失败！', icon = 'none', duratio
 Vue.config.productionTip = false
 
 App.mpType = 'app'
-
 const app = new Vue({
-  ...App
+  ...App,
+  store
 })
 app.$mount()

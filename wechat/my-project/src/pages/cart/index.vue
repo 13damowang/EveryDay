@@ -3,13 +3,19 @@
 </template>
 
 <script>
+import badgeMix from '@/mixins/tarbar-badge'
 export default {
   components: {},
+  mixins: [badgeMix],
   data() {
     return {}
   },
-  computed: {},
-  methods: {},
+  computed: {
+    
+  },
+  methods: {
+    
+  },
   watch: {},
 
   // 页面周期函数--监听页面加载
@@ -17,7 +23,9 @@ export default {
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)
-  onShow() {},
+  onShow() {
+
+  },
   // 页面周期函数--监听页面隐藏
   onHide() {},
   // 页面周期函数--监听页面卸载

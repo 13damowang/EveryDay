@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import {mapState, mapMutations, mapGetters} from 'vuex'
 export default {
   components: {},
   data() {
@@ -48,7 +49,7 @@ export default {
         }, {
           icon: 'cart',
           text: '购物车',
-          info: 2
+          info: 0
         }
       ],
       buttonGroup: [
@@ -65,8 +66,19 @@ export default {
 	    ]
     }
   },
-  computed: {},
+  computed: {
+    ...mapState('m_cart', [
+
+    ]),
+
+    ...mapGetters('m_cart', [
+      'total'
+    ])
+  },
   methods: {
+    ...mapMutations('m_cart', [
+      'ADDTOCART'
+    ]),
     getShopDeatil () {
       uni.showLoading({
         title: '数据加载中'
@@ -78,15 +90,15 @@ export default {
         },
         success: (data) => {
           const {data: res} = data
-          console.log(res)
           if (res.meta.status !== 200) {
             return uni.$showMeg('数据加载失败！')
           }
           res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display: block;"').replace(/webp/g, 'jpg')
           this.Req = res.message
+          uni.hideLoading();
         },
         complete: () => {
-          uni.hideLoading()
+
         }
       });
     },
@@ -107,15 +119,46 @@ export default {
     },
 
     buttonClick (e) {
+      if (e.content.text === '加入购物车') {
+        //开始封装购物车需要的数据，商品数量默认为1
+        const shops = {
+          goods_id: this.Req.goods_id,
+          goods_name: this.Req.goods_id,
+          goods_price: this.Req.goods_price,
+          goods_count: 1,
+          goods_small_logo: this.Req.goods_small_logo,
+          goods_state: this.Req.goods_state,
+        }
 
+        this.ADDTOCART(shops)
+      }
     }
 
   },
-  watch: {},
+  watch: {
+    //total为getters中定义的total方法，newValue的值为total方法return出来的值
+    // total (newValue) {
+    //   const findResult = this.options.find(item => item.text === '购物车')
+    //   if (findResult) {
+    //     findResult.info = newValue
+    //   }
+    // }
+    
+    //让total页面加载时就执行一次immediate:true
+    total: {
+      handler (newValue) {
+        const findResult = this.options.find(item => item.text === '购物车')
+        if (findResult) {
+          findResult.info = newValue
+        }
+      },
+      immediate: true
+    }
+  },
 
   // 页面周期函数--监听页面加载
   onLoad(options) {
-    this.id = options.good_id
+    this.id = options.goods_id
     this.getShopDeatil()
   },
   // 页面周期函数--监听页面初次渲染完成

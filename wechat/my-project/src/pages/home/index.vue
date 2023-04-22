@@ -68,8 +68,10 @@
 
 <script>
 import Search from '../../components/search.vue';
+import badgeMix from '@/mixins/tarbar-badge'
 export default {
   components: {Search},
+  mixins: [badgeMix],
   data() {
     return {
       swiperList: [],  //轮播图

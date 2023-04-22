@@ -611,7 +611,7 @@ beforeDestroy () {
   this.$bus.$off('funName')
 }
 
-消息订阅与发布：需要第三方插件
+消息订阅与发布：需要第三方插件(pubsub-js)
 
 $nextTick在下一次DOM更新之后（数据更新，模版解析）再执行起回调，防止更新不及时
 this.$nextTick(function () {
@@ -881,7 +881,7 @@ const Router = new VueRouter({
 </div>
 
 路由命名
-通过路由上的配置name，跳转上的path参数可以替换成name，并且直接些对应的name就可以跳转
+通过路由上的配置name，跳转上的path参数可以替换成name，并且直接写对应的name就可以跳转
 const router = new VueRouter({
   routes: [
     {
@@ -948,7 +948,7 @@ const router = new Vue Router({
           path: 'childrenComponent',
           component: childrenComponent,
           props: {id: '666'},
-          props: true
+          props: true,
           props (route) {
             return {
               id: route.query.id,
@@ -988,6 +988,10 @@ deactivated () {
   路由失活时调用
 }
 
+keep-alive用于包裹需要被缓存的组件（组件内的状态发生了改变），为了不被初始化
+<keep-alive>
+  <<component :is="componentId"></component>
+</keep-alive>
 
 路由守卫
 全局前置路由守卫，初始化的时候被调用，每次路由切换之前被调用
@@ -1349,7 +1353,7 @@ new Vue({
       b
     } 
 
-    如果使用ref重新定义的话，那么初次数据是指向的原想的ref对象，后续数据发生变化了之后，则不再是原先的ref对象了
+    如果使用ref重新定义的话，那么初次数据是指向的原先的ref对象，后续数据发生变化了之后，则不再是原先的ref对象了
     而是一个新的ref对象在变化
 
   }

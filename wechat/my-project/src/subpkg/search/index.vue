@@ -89,7 +89,7 @@ export default {
 
     gotoShopDetail (id) {
       uni.navigateTo({
-         url: `/subpkg/shopDetail/index?good_id=${id}`
+         url: `/subpkg/shopDetail/index?goods_id=${id}`
       });
     },
 

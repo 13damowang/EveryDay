@@ -40,7 +40,33 @@ export default {
 
     SAVETOSTORAGE (state) {
       uni.setStorageSync('cart', JSON.stringify(state.cart))
-    }
+    },
+
+    UPDATESHOPSSTATE (state, shops) {
+      const findResult = state.cart.find(item => item.goods_id === shops.goods_id)
+      if (findResult) {
+        findResult.goods_state = shops.goods_state
+        this.commit('m_cart/SAVETOSTORAGE')
+      }
+    },
+
+    UPDATASHOPSCOUNT (state, shops) {
+      const findResult = state.cart.find(item => item.goods_id === shops.goods_id)
+      if (findResult) {
+        findResult.goods_count = shops.goods_count
+        this.commit('m_cart/SAVETOSTORAGE')
+      }
+    },
+
+    REMOVESHOPS (state, shops) {
+      // state.cart.forEach((item, index) => {
+        //   if (item.goods_id === shops.goods_id) {
+          //     state.cart.splice(index, 1)
+          //   }
+          // })
+      state.cart = state.cart.filter(item => item.goods_id !== shops.goods_id)
+      this.commit('m_cart/SAVETOSTORAGE')
+    },
 
   },
 
@@ -48,7 +74,6 @@ export default {
     //动态根据加入购物车展示购物车中的商品数量
     total (state) {
       let c = 0
-      console.log(state.cart);
       state.cart.forEach(item => c += item.goods_count)
       return c
     }

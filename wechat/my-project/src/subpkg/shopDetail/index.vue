@@ -95,6 +95,7 @@ export default {
           }
           res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display: block;"').replace(/webp/g, 'jpg')
           this.Req = res.message
+          console.log(this.Req,222);
           uni.hideLoading();
         },
         complete: () => {
@@ -123,7 +124,7 @@ export default {
         //开始封装购物车需要的数据，商品数量默认为1
         const shops = {
           goods_id: this.Req.goods_id,
-          goods_name: this.Req.goods_id,
+          goods_name: this.Req.goods_name,
           goods_price: this.Req.goods_price,
           goods_count: 1,
           goods_small_logo: this.Req.goods_small_logo,

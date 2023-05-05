@@ -17,15 +17,15 @@
           <view class="right-sroll-title">/{{ item.cat_name }}/</view>
           <view class="right-child">
             <view class="right-image-item"
-            v-for="(item, index) in item.children"
-            :key="index"
-            @click="goToShopList(item)"
+            v-for="(val, valIndex) in item.children"
+            :key="valIndex"
+            @click="goToShopList(val)"
             >
               <image
-                :src="item.cat_icon"
+                :src="val.cat_icon"
                 mode="widthFix"
               />
-              <text>{{ item.cat_name }}</text>
+              <text>{{ val.cat_name }}</text>
           </view>
           </view>
         </view>
@@ -87,9 +87,9 @@ export default {
       this.scrollTop = this.scrollTop === 0 ? 1 : 0
     },
 
-    goToShopList (item) {
+    goToShopList (item) { 
       uni.navigateTo({
-         url: `/subpkg/shopList/index?cid=${item.cat_pid}`
+         url: `/subpkg/shopList/index?cid=${item.cat_id}`
       });
     },
 

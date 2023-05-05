@@ -124,4 +124,3 @@ const person33: Person33 = {
 // type Person44 = {
 //   age: number
 // }
-//测试提交

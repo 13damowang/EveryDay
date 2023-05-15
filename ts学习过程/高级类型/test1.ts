@@ -38,7 +38,7 @@ console.log(getName(() => 'wang2'))
 //类型别名用法：
 type Name1 = string //基本类型
 type arrItem = number | string  //联合类型
-const arr: arrItem[] = [1, '2', 3]  //定义了一个数组，数组中的值可以是number类型也可以是string
+const arr3: arrItem[] = [1, '2', 3]  //定义了一个数组，数组中的值可以是number类型也可以是string
 type Person1 = {
   name: Name1 //代表name是一个string类型
 }
@@ -124,3 +124,40 @@ const person33: Person33 = {
 // type Person44 = {
 //   age: number
 // }
+
+//类型保护
+//假设有一个函数，参数使用的联合类型（string | number），返回值是入参的length，此时是不行的，因为number类型没有length属性
+// function getLength (arg: number | string): number {
+//   return arg.length  报错
+// }
+
+//改造上文方法, 增加typeof来判断类型
+function getLength (arg: number | string): number {
+  if (typeof arg === 'string') {
+    return arg.length
+  } else {
+    return arg.toString.length
+  }
+}
+
+//类型断言
+//类型断言语法：值 as 类型
+function getLengthAS (arg: number | string): number {
+  const str = arg as string
+  if (str.length) {
+    return str.length
+  } else {
+    const number = arg as number
+    return number.toString().length
+  }
+}
+
+//字面量类型
+//定义类型的时候固定了一些常量，只能从这些常量中赋值，不匹配会报错
+type ButtonSize = 'mini' | 'small' | 'normal' | 'large'
+type Sex = '男' | '女'
+
+// const buttonSize:ButtonSize = 'big' 报错
+const buttonSize: ButtonSize = 'mini' //不报错
+// const sex: Sex = '男女' 报错
+const sex: Sex = '女' //不报错

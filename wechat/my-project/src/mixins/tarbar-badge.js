@@ -15,5 +15,11 @@ export default {
   },
   onShow() {
     this.setBadge()
-  }
+  },
+  watch: {
+    //动态监听增加商品数量，tarbar数量增加
+    total () {
+      this.setBadge()
+    }
+  },
 }

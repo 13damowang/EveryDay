@@ -1,5 +1,7 @@
 <template>
-  <view>
+  <view class="cart" v-if="cart.length !== 0">
+    <my-address></my-address>
+
     <view class="cart-title">
       <uni-icons type="shop" size="18"></uni-icons>
       <text class="cart-title-text">购物车</text>
@@ -14,16 +16,24 @@
         </uni-swipe-action-item>
       </block>
     </uni-swipe-action>
+
+    <my-settlement></my-settlement>
   </view>
+  <view v-else>空空如也～</view>
 </template>
 
 <script>
 import badgeMix from '@/mixins/tarbar-badge'
 import {mapMutations, mapState, mapGetters} from 'vuex'
 import {myShops} from '../../components/my-shops/index'
+import {myAddress} from '../../components/my-address/index'
+import {mySettlement} from '../../components/my-settlement/index'
 export default {
   components: {
-    'my-shops': myShops
+    'my-shops': myShops,
+    'my-address': myAddress,
+    'my-settlement': mySettlement,
+
   },
   mixins: [badgeMix],
   data() {
@@ -98,16 +108,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .cart-title {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    padding-left: 5px;
-    border-bottom: 1px solid #eee;
+  .cart {
+    padding-bottom: 50px;
+    .cart-title {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding-left: 5px;
+      border-bottom: 1px solid #eee;
 
-    .cart-title-text {
-      font-size: 14px;
-      margin-left: 10px;
+      .cart-title-text {
+        font-size: 14px;
+        margin-left: 10px;
+      }
     }
   }
 </style>

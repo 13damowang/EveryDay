@@ -163,3 +163,12 @@ let personMap: IRecord = {
  * 第一个参数可以传入继承于 any 的任何值
  * 第二个参数，作为新创建对象的值，被传入
  */
+
+//条件类型
+//Exclude：意思是不包含，Exclude<T, U> 会返回 联合类型 T 中不包含 联合类型 U 的部分
+type Test1 = Exclude<'a' | 'b' | 'c', 'a'>
+let t:Test1 //'b' | 'c'
+
+//Extract：Extract<T, U>提取联合类型 T 和联合类型 U 的所有交集
+type Test2 = Extract<'key1' | 'key2', 'key1'>
+let t2:Test2 //'key1'

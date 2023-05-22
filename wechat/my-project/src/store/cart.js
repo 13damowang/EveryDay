@@ -68,6 +68,11 @@ export default {
       this.commit('m_cart/SAVETOSTORAGE')
     },
 
+    CHECKEDALL (state, newState) {
+      state.cart.forEach(item => item.goods_state = newState)
+      this.commit('m_cart/SAVETOSTORAGE')
+    }
+
   },
 
   getters: {
@@ -76,6 +81,39 @@ export default {
       let c = 0
       state.cart.forEach(item => c += item.goods_count)
       return c
+    },
+
+    //结算商品的总数量
+    checkedCount (state) {
+      let count = 0
+      state.cart.forEach(item => {
+        if (item.goods_state) {
+          count += item.goods_count
+        }
+      })
+      return count
+    },
+
+    //全选
+    checkedAll (state) {
+      let flag = true
+      state.cart.forEach(item => {
+        if (!item.goods_state) {
+          flag = false
+        }
+      })
+      return flag
+    },
+
+    //商品总价
+    shopsPrice (state) {
+      let price = 0
+      state.cart.forEach(item => {
+        if (item.goods_state) {
+          price += item.goods_count * item.goods_price
+        }
+      })
+      return price.toFixed(2)
     }
   }
 }

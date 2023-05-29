@@ -17,7 +17,7 @@ export default {
        },
        * 
        */
-      cart: JSON.parse(uni.getStorageSync('cart') || '[]') 
+      cart: JSON.parse(uni.getStorageSync('cart') || '[]')
     }
   },
 

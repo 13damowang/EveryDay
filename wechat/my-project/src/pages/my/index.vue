@@ -1,16 +1,29 @@
 <template>
-  <div class="my">my</div>
+  <view class="my-content">
+    <my-login v-if="!token"></my-login>
+    <my-userinfo v-else></my-userinfo>
+  </view>
 </template>
 
 <script>
+import myLogin from '../../components/my-login/index'
+import myUserinfo from '../../components/my-userinfo/index'
 import badgeMix from '@/mixins/tarbar-badge'
+import {mapState} from 'vuex'
 export default {
-  components: {},
+  components: {
+    'my-login': myLogin,
+    'my-userinfo': myUserinfo
+  },
   mixins: [badgeMix],
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    ...mapState('m_user', [
+      'token'
+    ])
+  },
   methods: {},
   watch: {},
 
@@ -35,4 +48,14 @@ export default {
 } 
 </script>
 
-<style scoped></style>
+<style>
+  page {
+    height: 100%;
+  }
+</style>
+
+<style lang="scss" scoped>
+  .my-content {
+    height: 100%;
+  }
+</style>

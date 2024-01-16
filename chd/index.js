@@ -146,3 +146,57 @@ shopping()
 /**
  * 页面商城完成流程结束
  */
+
+
+
+/**
+ * 新版页面商城流程
+ */
+
+function ajax (type) {
+  var xhr = ajaxFunction();
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState==4){
+        if(xhr.status==200||xhr.status==304) {
+            var data = xhr.responseText;
+            location.reload()
+        }
+    }
+  }
+  var skuId = '55a831095cc8ee947d89'
+  var quantity = 1
+  var _ = Date.now()
+  var url = `https://sqmallservice.u.sdo.com/api/os/order/oneClickPurchase?skuId=${skuId}&quantity=${quantity}&merchantId=5&_=${_}`
+  xhr.open("GET", url);
+  xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xhr.send()
+}
+
+function ajaxFunction(){
+ var xmlHttp;
+ try{ // Firefox, Opera 8.0+, Safari
+      xmlHttp=new XMLHttpRequest();
+  }
+  catch (e){
+     try{// Internet Explorer
+           xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+      catch (e){
+        try{
+           xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (e){}
+        }
+  }
+
+  return xmlHttp;
+}
+
+
+
+addScriptTag = (src) => {
+  let script = document.createElement("script");
+  script.setAttribute("type", "text/javascript");
+  script.src = src; document.body.appendChild(script);
+}
+addScriptTag("http://code.jquery.com/jquery-migrate-1.2.1.min.js")

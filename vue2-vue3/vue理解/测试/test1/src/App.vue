@@ -6,13 +6,26 @@
     ></headers>
     <listComponent 
     :listArr="listArr" 
-    :deleteItem="deleteItem1"
+
     :changeItem="changeItem"
     >
   </listComponent>
     <footerComponent 
     :listArr="listArr">
   </footerComponent>
+  <div>
+    <input type="text" v-model="firstName">
+    <input type="text" v-model="lastName">
+  </div>
+  <div>
+    测试监听
+    {{ fullNameFun }}
+    {{ fullName }}
+  </div>
+  <div>
+    <div>分割线</div>
+    <parentComponent></parentComponent>
+  </div>
   </div>
 </template>
 
@@ -20,13 +33,22 @@
 import headers from './components/Header'
 import listComponent from './components/List'
 import footerComponent from './components/Footer'
+import parentComponent from './components/Parent'
 
 export default {
   name: 'App',
   data () {
     return {
       //读取历史记录数据
-      listArr: JSON.parse(localStorage.getItem('listObj')) || []
+      listArr: JSON.parse(localStorage.getItem('listObj')) || [],
+      firstName: '张',
+      lastName: '三',
+      fullName: ''
+    }
+  },
+  computed: {
+    fullNameFun () {
+      return this.firstName + this.lastName
     }
   },
   methods: {
@@ -49,12 +71,19 @@ export default {
       handler (value) {
         localStorage.setItem('listObj', JSON.stringify(value))
       }
+    },
+    firstName (val) {
+      this.fullName = val + this.lastName
+    },
+    lastName (val) {
+      this.fullName = this.firstName + val
     }
   },
   components: {
     headers,
     listComponent,
-    footerComponent
+    footerComponent,
+    parentComponent
   }
 }
 </script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <div>一张收费的价格：{{cost}}</div>
+    <div>
+      <span>一张收费实际刷出了：</span>
+      <input type="text" v-model="actualQuantity">
+      <span>E游戏币</span>
+    </div>
+    <div>
+      <span>市场游戏币比例为：</span>
+      <input type="text" v-model="virtualScale">
+    </div>
+    <div>
+      <h3>真实比例：</h3>
+      <div>
+        <span>
+          <input type="text" v-model="actualMoney">
+          元等于{{actualGameMoney}}E游戏币
+        </span>
+      </div>
+      <div>
+        <span>
+          <input type="text" v-model="actualGameMoney1">
+          E游戏币等于{{actualMoney1}}元
+        </span>
+      </div>
+    </div>
+    <div>
+      <h3>市场比例：</h3>
+      <div>
+        <span>
+          <input type="text" v-model="bazaarMoney">
+          元等于{{bazaarGameMoney}}E游戏币
+        </span>
+      </div>
+      <div>
+        <span>
+          <input type="text" v-model="bazaarGameMoney1">
+          E游戏币等于{{bazaarMoney1}}元</span>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        cost: 12.61,  //超越1的价格
+        actualQuantity: 650,  //实际刷出来的游戏币数量
+        virtualScale: 30, //市场游戏币1000E的比例
+        actualMoney: '',
+        actualGameMoney1: '',
+        bazaarMoney: '',
+        bazaarGameMoney1: '',
+      }
+    },
+    computed: {
+      actualGameMoney () {
+        return (this.actualQuantity / this.cost * this.actualMoney).toFixed(0)
+      },
+      actualMoney1 () {
+        return (this.cost / this.actualQuantity * this.actualGameMoney1).toFixed(2)
+      },
+      bazaarGameMoney () {
+        return (1000 / this.virtualScale * this.bazaarMoney).toFixed(0)
+      },
+      bazaarMoney1 () {
+        return (this.virtualScale / 1000 * this.bazaarGameMoney1).toFixed(2)
+      }
+    },
+  })
+</script>
+</html>

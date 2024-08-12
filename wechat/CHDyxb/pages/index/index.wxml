@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="box-yxb">
+      <view>
+        <van-cell-group>
+          <van-field
+            title-width="9em"
+            label-class="current-title"
+            type="digit"
+            model:value="{{ value100 }}"
+            label="每100E比例"
+            placeholder="请输入"
+            clearable
+          />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field
+            title-width="9em"
+            label-class="current-title"
+            type="digit"
+            value="{{ value1000 }}"
+            label="每1000E比例"
+            placeholder="请输入"
+            clearable
+          />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field
+            title-width="9em"
+            label-class="current-title"
+            type="digit"
+            value="{{ gamePrice }}"
+            label="物品游戏币价格(亿)"
+            placeholder="请输入"
+            clearable
+          />
+        </van-cell-group>
+        <van-cell-group>
+          <van-field
+            title-width="9em"
+            label-class="current-title"
+            type="digit"
+            value="{{ realPrice }}"
+            label="物品人民币价格(元)"
+            placeholder="请输入"
+            clearable
+          />
+        </van-cell-group>
+      </view>
+      <view class="footBtn">
+        <van-button type="info" block bind:click="btnClick">换转</van-button>
+      </view>
+    </view>
+  </view>
+</scroll-view>

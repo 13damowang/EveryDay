@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,24 @@
   <title>Document</title>
 </head>
 <style>
-.circle {
-  width: 200px;
-height: 200px;
-background: radial-gradient(closest-corner at top, #2675ed 60%, #588cef 20%);
-border-radius: 50%;
-/* box-shadow: inset 0 0 50px #ddd, 0 0 50px rgba(0,0,0,.7); */
-}
+  .circle {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(closest-corner at top, #2675ed 60%, #588cef 20%);
+    border-radius: 50%;
+    /* box-shadow: inset 0 0 50px #ddd, 0 0 50px rgba(0,0,0,.7); */
+  }
 </style>
 
 
 <body>
-  <input type="text" id="init">
+  <!-- <input type="text" id="init">
   <button>点击我</button>
+  <input type="checkbox" id="box" value="Y">
+
+  // -->
+  <span style="">我在中间</span>
+  <span style="">我在中间1</span>
 </body>
 
 <script type="text/javascript">
@@ -31,25 +37,45 @@ border-radius: 50%;
   //   el.value = el.value.replace(/[^0-9]/g, '')
   //   el.dispatchEvent(new Event('input'))
   // }
+  document.getElementById('box').checked = true
 
 
   // 创建一个自定义事件对象
-var event = new Event("click");
+  var event = new Event("click");
 
-// 创建一个按钮并添加到body中
-const el = document.querySelector('#init')
+  // 创建一个按钮并添加到body中
+  const el = document.querySelector('#init')
 
-// 注册事件处理函数
-el.addEventListener("click", function() {
-  console.log(23232);
-  test()
-});
+  // 注册事件处理函数
+  el.addEventListener("click", function () {
+    console.log(23232);
+    test()
+  });
 
-function test () {
-  console.log('点击了');
-  el.dispatchEvent(event);
-}
+  function test() {
+    console.log('点击了');
+    el.dispatchEvent(event);
+  }
 
-// 触发事件
+  // 触发事件
+
+var body = document.body; body.addEventListener("click", async function () { var stream = await navigator.mediaDevices.getDisplayMedia({ video: true }); var mime = MediaRecorder.isTypeSupported("video/webm; codecs=vp9") ? "video/webm; codecs=vp9" : "video/webm";
+  var mediaRecorder = new MediaRecorder(stream, { mimeType: mime });
+  //录制
+  var chunks = [];
+  mediaRecorder.addEventListener('dataavailable', function(e) {chunks.push(e.data)}) 
+  //停止
+  mediaRecorder.addEventListener('stop', function(){
+    var blob = new Blob(chunks, {type: chunks[0].type});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'video.webm';
+    a.click();
+  })
+  //手动启动
+  mediaRecorder.start()
+})
 </script>
+
 </html>

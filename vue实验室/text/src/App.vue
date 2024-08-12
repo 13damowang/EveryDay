@@ -1,37 +1,54 @@
 <template>
   <div id="app">
+    <!-- 测试222222222
     <HelloWorld
-      v-model="req"
-      :reg-exp="'[^0-9]'"
-    />
-    <div>父组件的值{{ req }}</div>
-    <span>a啊看见打卡机上帝看撒娇的卡拉斯京打卡手机打开垃圾上帝卡上生生世世啊上帝啊是大师大师的啊是大师大师大师大师老姜啊看大师大大大asdasda啊是大师大师的啊是大师的的撒卡萨的<p style="display: inline;">222000033.223</p>元撒大师的撒度，啊上帝撒的撒度</span>
+    :data="table"
+    /> -->
+    <!-- <button @click="testFn">点我</button> -->
+     {{textMode}}/
+     <enter-replace :value="textMode" @input="onInput"></enter-replace>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import RenderTestVue from './components/RenderTest'
-
+import { mixins } from './mixin/index';
 export default {
   name: 'App',
+  mixins: [mixins],
   components: {
     HelloWorld,
     RenderTestVue
   },
   data() {
     return {
-      req: ''
+      textMode: '',
+      req: '',
+      table: [
+        {
+          test: 'ddd',
+          req: ''
+        }
+      ]
     }
   },
-
+  created() {
+    console.log('我是app的created');
+  },
   mounted () {
-
+    console.log('我是app的mounted');
   },
 
   methods: {
     reset () {
       this.$refs.Req.resetFields()
+    },
+    testFn () {
+      console.log('我是点击方法', this.msg);
+    },
+    onInput (e) {
+      this.textMode = e
     }
   }
 

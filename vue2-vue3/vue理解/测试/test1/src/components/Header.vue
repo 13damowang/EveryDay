@@ -1,6 +1,12 @@
 <template>
   <div>
-    <input type="text" @keyup.enter="add()" v-model="search">
+    <el-table :data="table">
+      <el-table-column prop="test">
+        <template v-solt="scope">
+          <el-input v-model="scope.row.req"></el-input>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -9,10 +15,21 @@ import {nanoid} from 'nanoid'
 
 export default {
   name: 'headerComponent',
+  props: {
+    table: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
   data () {
     return {
       search: ''
     }
+  },
+  created () {
+    this.search = '22333'
   },
   // props: {
   //   addItem: {

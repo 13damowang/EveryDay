@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  let arr = [
+    {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }, {
+      test: ''
+    }
+  ]
+  const list = [
+    {
+      data: 1,
+      test: 8
+    }, {
+      data: 4,
+      test: 8
+    }, {
+      data: 5,
+      test: 4
+    }, {
+      data: 6,
+      test: 4
+    }, {
+      data: 7,
+      test: 4
+    }, {
+      data: 8,
+      test: 4
+    }, {
+      data: 10,
+      test: 4
+    }
+  ]
+
+list.forEach(item => {
+  const index = item.data - 1; // 转换为下标
+  arr[index].test = item.test; // 更新对应的test值
+});
+
+// 处理范围
+const updatedIndexes = new Set(list.map(item => item.data - 1))
+list.forEach(item => {
+  const startIndex = item.data - 1;
+  if (updatedIndexes.has(startIndex)) {
+    let endIndex = startIndex;
+    while (endIndex < arr.length - 1 && !updatedIndexes.has(endIndex + 1)) {
+      endIndex++
+    }
+    for (let i = startIndex; i <= endIndex; i++) {
+      arr[i].test = item.test
+    }
+  }
+});
+
+console.log(arr);
+</script>
+</html>

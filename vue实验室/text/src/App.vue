@@ -6,7 +6,11 @@
     /> -->
     <!-- <button @click="testFn">点我</button> -->
      {{textMode}}/
-     <enter-replace :value="textMode" @input="onInput"></enter-replace>
+     <!-- <el-input v-model="textMode" id="box">
+
+     </el-input> -->
+     <textarea name="" id="box" cols="30" rows="10"></textarea>
+     <el-button @click="modtest">点击</el-button>
   </div>
 </template>
 
@@ -38,9 +42,20 @@ export default {
   },
   mounted () {
     console.log('我是app的mounted');
+    const box = document.getElementById('box')
+    
+    
   },
 
   methods: {
+    modtest () {
+      box.focus()
+      const text = '2222'
+      navigator.clipboard.writeText(text).then(()=>{
+          alert("Copied.");
+      });
+      document.execCommand("paste");
+    },
     reset () {
       this.$refs.Req.resetFields()
     },

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+		<!-- <input type="file" id="file" @change="test()"> -->
+		<div id="uploadContainer"></div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/exceljs/4.4.0/exceljs.bare.js"></script>
+<script>
+	// 1. 动态加载 ExcelJS CDN
+  function loadExcelJsCDN() {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/exceljs@4.3.0/dist/exceljs.min.js';
+      script.onload = () => resolve();
+      script.onerror = (err) => reject(new Error('ExcelJS CDN 加载失败: ' + err));
+      document.head.appendChild(script);
+    });
+  }
+
+  // 2. 创建上传按钮
+  function createUploadButton() {
+    const uploadContainer = document.getElementById('uploadContainer');
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = '.xlsx, .xls'; // 限制为 Excel 文件
+    uploadContainer.appendChild(fileInput);
+    
+    fileInput.addEventListener('change', handleFileUpload);
+  }
+
+  // 3. 处理文件上传并解析 Excel 数据
+  async function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (!file) {
+      alert("请选择一个 Excel 文件！");
+      return;
+    }
+
+    const reader = new FileReader();
+    
+    reader.onload = async function(event) {
+      const buffer = event.target.result;
+
+      // 4. 使用 ExcelJS 解析 Excel 文件
+      const workbook = new ExcelJS.Workbook();
+      await workbook.xlsx.load(buffer); // 使用 load 来读取数据
+      const worksheet = workbook.worksheets[0]; // 获取第一个工作表
+      const rows = [];
+      
+      worksheet.eachRow({ includeEmpty: true }, (row, rowNumber) => {
+        rows.push(row.values); // 将行数据保存到数组
+      });
+
+      // 5. 在控制台输出读取的数据
+      console.log(rows);
+      // 开始处理数据
+      const table = rows.slice(2)
+      const arr = []
+      table.forEach(item => {
+        let isWork = ''
+        if (item[12].indexOf('事假') !== -1) {
+          isWork = 'REST' //调休
+        } else if (item[12].indexOf('工作日超时工作') !== -1) {
+          isWork = 'OVERTIME' //加班
+        } else {
+          isWork = 'WORK' //正常
+        }
+        arr.push({
+          date: item[9].replaceAll('-', '/'),
+          isWork,
+          workTime: item[16] * 1,
+          niuMaTime: item[20] * 1
+        })
+      })
+      console.log(JSON.stringify(arr));
+      
+    };
+    
+    reader.readAsArrayBuffer(file);
+  }
+
+  // 6. 动态加载 CDN 并初始化
+  loadExcelJsCDN()
+    .then(() => {
+      console.log('ExcelJS CDN 加载成功!');
+      createUploadButton(); // 加载完成后创建上传按钮
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+</script>
+</html>

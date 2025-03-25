@@ -1,37 +1,555 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <!-- import CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-  <div id="app">
-    <el-input @blur="blurFn" v-model="val"></el-input>
-  </div>
+  <tbody id="sheet_List">
+    <tr class="tr20250210" id="tr0">
+
+      <td style="width: 80px;">2025/02/10</td>
+      <td style="width:50px;">星期一</td>
+
+      <input type="hidden" id="id0" name="timeSheetList[0].id" value="">
+      <input type="hidden" name="timeSheetList[0].version" value="">
+      <input type="hidden" name="timeSheetList[0].year" value="2025">
+      <input type="hidden" name="timeSheetList[0].month" value="02">
+      <input type="hidden" name="timeSheetList[0].day" value="10">
+      <input type="hidden" name="timeSheetList[0].isHoliday" value="false">
+      <input type="hidden" name="timeSheetList[0].weekName" value="星期一">
+      <input type="hidden" name="timeSheetList[0].writeTimeStr" value="2025-2-10">
+      <td style="width:200px;">
+        <select onchange="changeStatus(this)" id="joinProject0"
+          class="opt-peoject-n opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[0].project.id" required="true" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject0-container"><span class="select2-selection__rendered"
+                id="select2-joinProject0-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[0].jobStatus" class="opt-type" style="width:80px;">
+          <option value="WORK" selected="">正常</option>
+          <option value="LEAVE">事假</option>
+          <option value="REST">调休</option>
+          <option value="OVERTIME">加班</option>
+          <option value="ANNUAL_LEAVE">年假</option>
+          <option value="SICK_LEAVE">病假</option>
+          <option value="MARRIAGE_LEAVE">婚假</option>
+          <option value="MATERNITY_LEAVE">产假</option>
+          <option value="PATERNITY_LEAVE">陪产假</option>
+          <option value="BEREAVEMENT_LEAVE">丧假</option>
+          <option value="WAIT_JOB">待岗</option>
+          <option value="RESIGNED">已离职</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours0" name="timeSheetList[0].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent0" type="text"
+          name="timeSheetList[0].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_0" class="resumeNewName" name="timeSheetList[0].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_0" class="resumePath" name="timeSheetList[0].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_0" name="timeSheetList[0].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_0"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_0" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(0)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow0" class="btn" onclick="addRow(0)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn0" class="btn" onclick="delRow(this,20250210)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+    <tr class="tr20250211" id="tr1">
+
+      <td style="width: 80px;">2025/02/11</td>
+      <td style="width:50px;">星期二</td>
+
+      <input type="hidden" id="id1" name="timeSheetList[1].id" value="">
+      <input type="hidden" name="timeSheetList[1].version" value="">
+      <input type="hidden" name="timeSheetList[1].year" value="2025">
+      <input type="hidden" name="timeSheetList[1].month" value="02">
+      <input type="hidden" name="timeSheetList[1].day" value="11">
+      <input type="hidden" name="timeSheetList[1].isHoliday" value="false">
+      <input type="hidden" name="timeSheetList[1].weekName" value="星期二">
+      <input type="hidden" name="timeSheetList[1].writeTimeStr" value="2025-2-11">
+      <td style="width:200px;">
+        <select onchange="changeStatus(this)" id="joinProject1"
+          class="opt-peoject-n opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[1].project.id" required="true" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject1-container"><span class="select2-selection__rendered"
+                id="select2-joinProject1-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[1].jobStatus" class="opt-type" style="width:80px;">
+          <option value="WORK" selected="">正常</option>
+          <option value="LEAVE">事假</option>
+          <option value="REST">调休</option>
+          <option value="OVERTIME">加班</option>
+          <option value="ANNUAL_LEAVE">年假</option>
+          <option value="SICK_LEAVE">病假</option>
+          <option value="MARRIAGE_LEAVE">婚假</option>
+          <option value="MATERNITY_LEAVE">产假</option>
+          <option value="PATERNITY_LEAVE">陪产假</option>
+          <option value="BEREAVEMENT_LEAVE">丧假</option>
+          <option value="WAIT_JOB">待岗</option>
+          <option value="RESIGNED">已离职</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours1" name="timeSheetList[1].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent1" type="text"
+          name="timeSheetList[1].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_1" class="resumeNewName" name="timeSheetList[1].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_1" class="resumePath" name="timeSheetList[1].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_1" name="timeSheetList[1].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_1"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_1" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(1)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow1" class="btn" onclick="addRow(1)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn1" class="btn" onclick="delRow(this,20250211)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+    <tr class="tr20250212" id="tr2">
+
+      <td style="width: 80px;">2025/02/12</td>
+      <td style="width:50px;">星期三</td>
+
+      <input type="hidden" id="id2" name="timeSheetList[2].id" value="">
+      <input type="hidden" name="timeSheetList[2].version" value="">
+      <input type="hidden" name="timeSheetList[2].year" value="2025">
+      <input type="hidden" name="timeSheetList[2].month" value="02">
+      <input type="hidden" name="timeSheetList[2].day" value="12">
+      <input type="hidden" name="timeSheetList[2].isHoliday" value="false">
+      <input type="hidden" name="timeSheetList[2].weekName" value="星期三">
+      <input type="hidden" name="timeSheetList[2].writeTimeStr" value="2025-2-12">
+      <td style="width:200px;">
+        <select onchange="changeStatus(this)" id="joinProject2"
+          class="opt-peoject-n opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[2].project.id" required="true" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject2-container"><span class="select2-selection__rendered"
+                id="select2-joinProject2-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[2].jobStatus" class="opt-type" style="width:80px;">
+          <option value="WORK" selected="">正常</option>
+          <option value="LEAVE">事假</option>
+          <option value="REST">调休</option>
+          <option value="OVERTIME">加班</option>
+          <option value="ANNUAL_LEAVE">年假</option>
+          <option value="SICK_LEAVE">病假</option>
+          <option value="MARRIAGE_LEAVE">婚假</option>
+          <option value="MATERNITY_LEAVE">产假</option>
+          <option value="PATERNITY_LEAVE">陪产假</option>
+          <option value="BEREAVEMENT_LEAVE">丧假</option>
+          <option value="WAIT_JOB">待岗</option>
+          <option value="RESIGNED">已离职</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours2" name="timeSheetList[2].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent2" type="text"
+          name="timeSheetList[2].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_2" class="resumeNewName" name="timeSheetList[2].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_2" class="resumePath" name="timeSheetList[2].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_2" name="timeSheetList[2].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_2"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_2" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(2)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow2" class="btn" onclick="addRow(2)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn2" class="btn" onclick="delRow(this,20250212)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+    <tr class="tr20250213" id="tr3">
+
+      <td style="width: 80px;">2025/02/13</td>
+      <td style="width:50px;">星期四</td>
+
+      <input type="hidden" id="id3" name="timeSheetList[3].id" value="">
+      <input type="hidden" name="timeSheetList[3].version" value="">
+      <input type="hidden" name="timeSheetList[3].year" value="2025">
+      <input type="hidden" name="timeSheetList[3].month" value="02">
+      <input type="hidden" name="timeSheetList[3].day" value="13">
+      <input type="hidden" name="timeSheetList[3].isHoliday" value="false">
+      <input type="hidden" name="timeSheetList[3].weekName" value="星期四">
+      <input type="hidden" name="timeSheetList[3].writeTimeStr" value="2025-2-13">
+      <td style="width:200px;">
+        <select onchange="changeStatus(this)" id="joinProject3"
+          class="opt-peoject-n opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[3].project.id" required="true" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject3-container"><span class="select2-selection__rendered"
+                id="select2-joinProject3-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[3].jobStatus" class="opt-type" style="width:80px;">
+          <option value="WORK" selected="">正常</option>
+          <option value="LEAVE">事假</option>
+          <option value="REST">调休</option>
+          <option value="OVERTIME">加班</option>
+          <option value="ANNUAL_LEAVE">年假</option>
+          <option value="SICK_LEAVE">病假</option>
+          <option value="MARRIAGE_LEAVE">婚假</option>
+          <option value="MATERNITY_LEAVE">产假</option>
+          <option value="PATERNITY_LEAVE">陪产假</option>
+          <option value="BEREAVEMENT_LEAVE">丧假</option>
+          <option value="WAIT_JOB">待岗</option>
+          <option value="RESIGNED">已离职</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours3" name="timeSheetList[3].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent3" type="text"
+          name="timeSheetList[3].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_3" class="resumeNewName" name="timeSheetList[3].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_3" class="resumePath" name="timeSheetList[3].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_3" name="timeSheetList[3].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_3"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_3" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(3)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow3" class="btn" onclick="addRow(3)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn3" class="btn" onclick="delRow(this,20250213)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+    <tr class="tr20250214" id="tr4">
+
+      <td style="width: 80px;">2025/02/14</td>
+      <td style="width:50px;">星期五</td>
+
+      <input type="hidden" id="id4" name="timeSheetList[4].id" value="">
+      <input type="hidden" name="timeSheetList[4].version" value="">
+      <input type="hidden" name="timeSheetList[4].year" value="2025">
+      <input type="hidden" name="timeSheetList[4].month" value="02">
+      <input type="hidden" name="timeSheetList[4].day" value="14">
+      <input type="hidden" name="timeSheetList[4].isHoliday" value="false">
+      <input type="hidden" name="timeSheetList[4].weekName" value="星期五">
+      <input type="hidden" name="timeSheetList[4].writeTimeStr" value="2025-2-14">
+      <td style="width:200px;">
+        <select onchange="changeStatus(this)" id="joinProject4"
+          class="opt-peoject-n opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[4].project.id" required="true" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject4-container"><span class="select2-selection__rendered"
+                id="select2-joinProject4-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[4].jobStatus" class="opt-type" style="width:80px;">
+          <option value="WORK" selected="">正常</option>
+          <option value="LEAVE">事假</option>
+          <option value="REST">调休</option>
+          <option value="OVERTIME">加班</option>
+          <option value="ANNUAL_LEAVE">年假</option>
+          <option value="SICK_LEAVE">病假</option>
+          <option value="MARRIAGE_LEAVE">婚假</option>
+          <option value="MATERNITY_LEAVE">产假</option>
+          <option value="PATERNITY_LEAVE">陪产假</option>
+          <option value="BEREAVEMENT_LEAVE">丧假</option>
+          <option value="WAIT_JOB">待岗</option>
+          <option value="RESIGNED">已离职</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours4" name="timeSheetList[4].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent4" type="text"
+          name="timeSheetList[4].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_4" class="resumeNewName" name="timeSheetList[4].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_4" class="resumePath" name="timeSheetList[4].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_4" name="timeSheetList[4].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_4"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_4" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(4)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow4" class="btn" onclick="addRow(4)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn4" class="btn" onclick="delRow(this,20250214)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+    <tr class="tr20250215" id="tr5">
+
+      <td style="width: 80px;">2025/02/15</td>
+      <td style="width:50px;">星期六</td>
+
+      <input type="hidden" id="id5" name="timeSheetList[5].id" value="">
+      <input type="hidden" name="timeSheetList[5].version" value="">
+      <input type="hidden" name="timeSheetList[5].year" value="2025">
+      <input type="hidden" name="timeSheetList[5].month" value="02">
+      <input type="hidden" name="timeSheetList[5].day" value="15">
+      <input type="hidden" name="timeSheetList[5].isHoliday" value="true">
+      <input type="hidden" name="timeSheetList[5].weekName" value="星期六">
+      <input type="hidden" name="timeSheetList[5].writeTimeStr" value="2025-2-15">
+      <td style="width:200px;">
+        <select id="joinProject5" class="opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[5].project.id" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject5-container"><span class="select2-selection__rendered"
+                id="select2-joinProject5-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[5].jobStatus" class="opt-type" style="width:80px;">
+          <option value="OVERTIME">加班</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours5" name="timeSheetList[5].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent5" type="text"
+          name="timeSheetList[5].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_5" class="resumeNewName" name="timeSheetList[5].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_5" class="resumePath" name="timeSheetList[5].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_5" name="timeSheetList[5].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_5"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_5" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(5)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow5" class="btn" onclick="addRow(5)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn5" class="btn" onclick="delRow(this,20250215)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+    <tr class="tr20250216" id="tr6">
+
+      <td style="width: 80px;">2025/02/16</td>
+      <td style="width:50px;">星期日</td>
+
+      <input type="hidden" id="id6" name="timeSheetList[6].id" value="">
+      <input type="hidden" name="timeSheetList[6].version" value="">
+      <input type="hidden" name="timeSheetList[6].year" value="2025">
+      <input type="hidden" name="timeSheetList[6].month" value="02">
+      <input type="hidden" name="timeSheetList[6].day" value="16">
+      <input type="hidden" name="timeSheetList[6].isHoliday" value="true">
+      <input type="hidden" name="timeSheetList[6].weekName" value="星期日">
+      <input type="hidden" name="timeSheetList[6].writeTimeStr" value="2025-2-16">
+      <td style="width:200px;">
+        <select id="joinProject6" class="opt-peoject js-example-placeholder-multiple-one select2-hidden-accessible"
+          name="timeSheetList[6].project.id" style="width:200px;" tabindex="-1" aria-hidden="true">
+          <option value="">-请选择项目-</option>
+          <option data-tgkqstatus="N" data-jsjbstatus="N" value="ff8080817589c8fc0176d5b265695244" selected="">
+            太平金运客服核心业务CC系统项目</option>
+        </select><span class="select2 select2-container select2-container--default" dir="ltr"
+          style="width: 200px;"><span class="selection"><span class="select2-selection select2-selection--single"
+              role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+              aria-labelledby="select2-joinProject6-container"><span class="select2-selection__rendered"
+                id="select2-joinProject6-container" title="太平金运客服核心业务CC系统项目">太平金运客服核心业务CC系统项目</span><span
+                class="select2-selection__arrow" role="presentation"><b
+                  role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+            aria-hidden="true"></span></span>
+      </td>
+      <td style="width:80px;">
+        <select name="timeSheetList[6].jobStatus" class="opt-type" style="width:80px;">
+          <option value="OVERTIME">加班</option>
+        </select>
+      </td>
+      <td style="width:80px;">
+        <input type="number" id="workHours6" name="timeSheetList[6].workHours" placeholder="序号" required="true"
+          min="0.0" max="24.0" step="0.5" onkeyup="checkData(id);" class="num input-mini" value="0">
+        <label class="error" style="display: none;"></label>
+      </td>
+      <td style="width:280px;"><textarea rows="2" cols="5" id="workContent6" type="text"
+          name="timeSheetList[6].workContent" value="" placeholder="请填写工作内容" style="width:280px;"></textarea></td>
+      <!--					<td style="width:50px;" class="upload_td">-->
+
+      <!--						<input id="resumeNewName_6" class="resumeNewName" name="timeSheetList[6].resumeNewName" type="hidden" value=""/>-->
+      <!--						<input id="resumePath_6" class="resumePath" name="timeSheetList[6].resumePath"  type="hidden" value=""/>-->
+      <!--						<input id="resumeSize_6" name="timeSheetList[6].resumeSize" type="hidden" value=""/>-->
+      <!--						<input id="url_6"  class="" type="text"  value="" readonly="readonly" >&nbsp;-->
+      <!--						&lt;!&ndash;							<input type="button" required='true' class="file"  id="uploadButton_6" value="选择文件" >&ndash;&gt;-->
+      <!--						<input type="button" required='true' class="file" onclick="btn(6)" value="选择文件" >-->
+
+      <!--						-->
+
+
+
+
+      <td style="width:85px;">
+        <a id="addRow6" class="btn" onclick="addRow(6)"><i class="icon-plus"></i>
+        </a>&nbsp;<a id="delbtn6" class="btn" onclick="delRow(this,20250216)"><i class="icon-remove"></i></a>
+      </td>
+    </tr>
+
+
+  </tbody>
 </body>
-  <!-- import Vue before Element -->
-  <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
-  <!-- import JavaScript -->
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      data: function() {
-        return {
-          visible: false,
-          val: ''
-        }
-      },
-      methods: {
-        blurFn () {
-          if (this.val.length < 10) {
-            this.$alert('这是一段内容', '标题名称', {
-              
-            });
+<script>
+  let arr = [
+    {"date":"2025/02/17","workType":"REST","workTime":5,"niuMaTime":2}
+  ]
+  let id = 6
+  const itemStatusArr = document.getElementsByClassName('opt-type') //状态
+  // 根据每个星期7天来循环
+  for (let m = 0; m <= id; m++) {
+    arr.forEach((item,index) => {
+      console.log(document.getElementById)
+      const itemTr = document.getElementById(`tr${m}`)  //填写日期
+      const itemworkHours = document.getElementById(`workHours${m}`)
+      const iremWorkContent = document.getElementById(`workContent${m}`)
+      const addRow = document.getElementById(`addRow${m}`)
+      tdDate = itemTr.querySelector('td').innerHTML
+      if (tdDate === item.date) {
+        iremWorkContent.value = '1'
+        switch (item.workType) {
+          case 'WORK':  //正常
+          itemStatusArr[index].value = item.workType
+          itemworkHours.value = item.workTime
+          break
+
+          case 'OVERTIME':  //加班
+          itemStatusArr[index].value = 'WORK'
+          itemworkHours.value = item.workTime
+          setTimeout(() => {
+            addRow.onclick(index)
+          }, 3000)
+            break
+          
+          case 'REST':  //调休
+          if (8 - item.workTime === 0) {
+            itemStatusArr[index].value = item.workType
+            itemworkHours.value = 0
+          } else {
+            itemStatusArr[index].value = 'WORK'
+            itemworkHours.value = item.workTime
+            setTimeout(() => {
+              addRow.onclick(index)
+            }, 3000)
+            if (item.niuMaTime) {
+              setTimeout(() => {
+                addRow.onclick(index) //log
+              }, 3000)
+            }
           }
+          break
         }
       }
     })
-  </script>
+  }
+  // console.log(arr)
+  post('api/postapi', {
+    params: {}
+  }).then(res => {
+    console.log(res.data)
+  })
+
+</script>
 </html>

@@ -1,0 +1,16 @@
+{
+  "name": "Auto TXT Writer",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "自动在 Downloads 里创建并覆盖写入 log.txt",
+  "permissions": [
+    "downloads",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
